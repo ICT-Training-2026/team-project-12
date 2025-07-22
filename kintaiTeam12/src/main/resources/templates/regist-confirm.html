@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>データ登録確認</title>
+<link rel="stylesheet" th:href="@{/css/style3.css}">
+</head>
+<body>
+    <h1 class="tytle">以下の内容で登録してよろしいですか？</h1>
+    <table border="1">
+        <tr>
+            <th>日付</th>
+            <td th:text="${}"></td>
+        </tr>
+		
+        <tr>
+            <th>勤怠区分</th>
+            <td th:text="${}"></td>
+        </tr>
+		
+        <tr>
+            <th>出勤時刻</th>
+			<td>
+				<span th:text="${}">:</span>&nbsp;
+				<span th:text="${}"></span>
+			</td>
+			
+        </tr>
+		
+        <tr>
+			<th>退勤時刻</th>
+			<td>
+				<span th:text="${}">:</span>&nbsp;
+				<span th:text="${}"></span>
+			</td>
+						
+        </tr>
+        <tr>
+            <th>休憩時間(分)</th>
+			<td>
+				<span th:text="${}"></span>
+			</td>
+        </tr>
+    </table>
+	
+    <div>
+        <form th:action="@{/regist_attend}" method="post" th:object="${}">
+            <input type="submit" value="もどる" class="btn">      
+        </form>
+		
+        <form th:action="@{/regist_complete}" method="post" th:object="${}">
+            <input type="submit" value="登録する" class="btn" >
+        </form>
+    </div>
+</body>
+</html>
