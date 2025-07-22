@@ -1,0 +1,95 @@
+/* 全体の背景色とフォント設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fcebb6;
+    text-align: center;
+}
+
+
+/* コンテナ */
+.container {
+    padding: 20px;
+}
+
+
+/* タイトルのスタイリング */
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffc107;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+
+/* ユーザー情報のスタイリング */
+.user-info {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+
+/* 労働時間のスタイリング */
+.work-hours {
+    font-size: 16px;
+    color: #555;
+    margin: 20px 0 40px 0;
+}
+
+
+/* ボタングループを横並びにする */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* ボタンの間の余白 */
+    margin-top: 20px;
+}
+
+
+/* ボタン全体のスタイリング */
+.btn {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-color: #ffd662;
+    border-radius: 50%;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+	background-color: #ff9203;
+}
+
+
+/* ボタン内のアイコンのスタイリング */
+.btn-icon {
+    font-size: 36px; /* 絵文字のサイズを大きくする */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ボタン内のテキスト（説明ラベル）のスタイリング */
+.btn p {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+}
