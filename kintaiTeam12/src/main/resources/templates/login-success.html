@@ -19,9 +19,12 @@
 		
 	<br>
 	
-	<form th:action="@{/personal_page}" method="post">
+	<form th:action="@{/personal_page}" th:object ="${employeeNumForm}" method="post">
+		<input type="hidden" th:field="*{employeeNum}">
 		<input type="submit" value="総務ページ" class="btn">
 	</form>
+	
+	<p th:text="${message}"></p>
 				
 </body>
 </html>
