@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>総務ページ</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div>総務専用ページ</div>
+	<form th:action="@{/my-page}" method="post">
+			<input type="submit" value="myページ" class="btn">
+		</form>
+	<br>
+	<form th:action="@{/personal-export}" method="post">
+			<input type="submit" value="エクスポート" class="btn">
+		</form>
+</body>
+</html>

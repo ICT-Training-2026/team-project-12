@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+<link rel="stylesheet" th:href="@{/css/my-page.css}">
+</head>
+<body>
+    <div class="container">
+        <!-- タイトル -->
+        <h1>Welcome</h1>
+       
+        <!-- ユーザー情報表示 -->
+        <p class="user-info">
+            <!-- データベースから取得する際のコメントアウト -->
+            <!-- 123456789 {last_name} {first_name} さん -->
+            123456789 〇〇 〇〇さん
+        </p>
+       
+        <!-- 月の労働時間 -->
+        <p class="work-hours">
+            今月の労働時間は〇時間です。
+        </p>
+       
+        <!-- ボタン一覧 -->
+        <div class="button-group">
+    <!-- 勤怠登録ボタン -->
+    <form th:action="@{/regist-attend}" method="post" class="btn">
+        <input type="submit" class="btn-icon" value="⏰">
+        <p class="button-label">勤怠登録</p>
+    </form>
+
+
+    <!-- 編集・削除ボタン -->
+    <form th:action="@{/edit-delete}" method="post" class="btn">
+        <input type="submit" class="btn-icon" value="✏️">
+        <p class="button-label">編集・削除</p>
+    </form>
+
+
+    <!-- 勤怠検索ボタン -->
+    <form th:action="@{/search-normal}" method="post" class="btn">
+        <input type="submit" class="btn-icon" value="🔍">
+        <p class="button-label">勤怠検索</p>
+    </form>
+</div>

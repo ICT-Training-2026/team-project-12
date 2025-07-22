@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>エクスポート画面</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>エクスポート</h1>
+    <p>エクスポートが完了するまでお待ちください。</p>
+	
+    <form th:action="@{/personal-page}" method="post">
+        <input type="submit" value="もどる" class="btn">
+    </form>
+   
+</body>
+</html>
