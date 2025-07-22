@@ -10,13 +10,16 @@
    <h1>認証完了</h1>
    <p>ログインに成功しました。</p>
 	
-	<form th:action="@{/my-page}" method="post">
+	<form th:action="@{/my_page}" th:object ="${employeeNumForm}" method="post">
+		<input type="hidden" th:field="*{employeeNum}">
+<!--		<input type="hidden" th:field="*{pass}">-->
+		
 		<input type="submit" value="myページ" class="btn">
 	</form>
 		
 	<br>
 	
-	<form th:action="@{/personal-page}" method="post">
+	<form th:action="@{/personal_page}" method="post">
 		<input type="submit" value="総務ページ" class="btn">
 	</form>
 				

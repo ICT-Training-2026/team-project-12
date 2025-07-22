@@ -12,16 +12,15 @@
         <h1>Welcome</h1>
        
         <!-- ユーザー情報表示 -->
-        <p class="user-info">
-            <!-- データベースから取得する際のコメントアウト -->
-            <!-- 123456789 {last_name} {first_name} さん -->
-            123456789 〇〇 〇〇さん
-        </p>
-       
+		<p class="user-info">
+			社員番号 <a th:text="${employeenum}"></a> <a th:text = "${name}"></a>さん
+		</p>
+		
         <!-- 月の労働時間 -->
         <p class="work-hours">
-            今月の労働時間は〇時間です。
+            今月の労働時間は<a th:text = "${hours}"></a>時間です。
         </p>
+		
        
         <!-- ボタン一覧 -->
         <div class="button-group">
