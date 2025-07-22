@@ -9,6 +9,7 @@ import com.example.demo.entity.MyPage;
 import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.NameService;
+import com.example.demo.service.PersonalService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +17,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 	
-	private final NameService service;
+	private final NameService nservice;
+	private final PersonalService pservice;
 	
 	@PostMapping("my_page")
 	public String myPage(@ModelAttribute EmployeeNumForm empform, @ModelAttribute MyForm myform,Model model) {
@@ -25,7 +27,7 @@ public class AuthController {
 		
 		System.out.println("AuthController myPage : " + empform);
 		
-		tmp = service.MyReference(empform.getEmployeeNum());
+		tmp = nservice.MyReference(empform.getEmployeeNum());
 		
 		model.addAttribute("employeenum",empform.getEmployeeNum());
 		model.addAttribute("name",tmp.getName());
@@ -35,10 +37,23 @@ public class AuthController {
 	}
 	
 	@PostMapping("personal_page")
-	public String personalPage() {
+	public String personalPage(@ModelAttribute EmployeeNumForm empform, @ModelAttribute MyForm myform,Model model) {
+		
+		String compose = pservice.personalReference(empform.getEmployeeNum());
+		
+		
+		if(compose.equals("1")||compose.equals("2")){
+			
+			return "personal-page";
+			
+		}else {
+			
+			model.addAttribute("message","あなたには権限がありません");
+			return "login-success";
+			
+		}
 		
 		
 		
-		return "personal-page";
 	}
 }
