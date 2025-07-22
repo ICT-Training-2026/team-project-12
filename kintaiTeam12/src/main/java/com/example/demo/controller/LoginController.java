@@ -42,6 +42,5 @@ public class LoginController {
 			return "login-page";
 		}
 		
-		
 	}
 }
