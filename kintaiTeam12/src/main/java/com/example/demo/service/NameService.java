@@ -20,7 +20,7 @@ public class NameService {
 		MyPage tmp = new MyPage();
 		
 		tmp.setName(repository.findByName(empnum));
-		tmp.setHours(repository.sumByHours());
+		tmp.setHours(repository.sumByHours(empnum));
 		
 		return tmp;
 	}

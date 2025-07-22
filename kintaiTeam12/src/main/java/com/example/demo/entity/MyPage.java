@@ -6,6 +6,6 @@ import lombok.Data;
 public class MyPage {
 	
 	private String name;
-	private int hours;
+	private String hours;
 	
 }
