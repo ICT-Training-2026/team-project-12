@@ -8,24 +8,26 @@
 <body>
     <div class="container">
         <h1>勤怠管理アプリ</h1>
-        <form class="login-page" th:action="@{/login-page}" method="post">
+        <form class="login-page" th:action="@{/login_start}" th:object="${loginForm}" method="post">
             <div class="input-group">
                 <label for="employee-id">社員番号</label>
                 <input type="text" id="employee-id" name="employee-id"
                     pattern="[0-9]{6}"
                     title="社員番号は半角数字6文字で入力してください"
-                    required>
+                    required
+					th:field="*{employeeNum}">
             </div>
             <div class="input-group">
                 <label for="password">パスワード</label>
                 <input type="password" id="password" name="password"
                     pattern="[a-zA-Z0-9]{1,16}"
                     title="パスワードは1文字以上16文字以内の半角英数字で入力してください"
-                    required>
+                    th:field="*{pass}">
             </div>
-            <p class="error-message">社員番号またはパスワードが間違っています</p>
             <input type="submit" class="login-button" value="ログイン">
         </form>
+		
+		<p th:text="${message}"></p>
     </div>
 </body>
 </html>
