@@ -10,7 +10,7 @@
 	
 	<p class="user-info">社員番号 <a th:text="${employeenum}"></a></p>
 	
-    <form th:action="@{/regist_confirm}" method="post" th:object="${attendForm}">
+    <form th:action="@{regist_confirm}" method="post" th:object="${attendForm}">
         <table border="1">
             <tr>
                 <th>日付</th>
@@ -223,7 +223,7 @@
 <!--	エラー-->
 	<p th:text="${message}"></p>
 	
-	<form th:action="@{/return_mypage}" method="post" th:object="${myForm}">
+	<form th:action="@{return_mypage}" method="post" th:object="${myForm}">
 		
 		<input type="hidden" th:field="*{employeeNum}">
 	

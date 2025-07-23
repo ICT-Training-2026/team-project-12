@@ -35,17 +35,25 @@ public class RegistController {
 		model.addAttribute("hours",tmp.getHours());
 		
 		
-
-		model.addAttribute("employeenum", myform.getEmployeeNum());
-
-
 		return "my-page";
 	}
 	
 	
 	@PostMapping("regist_confirm")
-	public String registConfirm(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform) {
+	public String registConfirm(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform, Model model) {
 		
+		model.addAttribute("employeeNum",attendform.getEmployeeNum());
+		model.addAttribute("year",attendform.getYear());
+		model.addAttribute("attendanceType",attendform.getAttendanceType());
+		model.addAttribute("startHour",attendform.getStartHour());
+		model.addAttribute("startMinute",attendform.getStartMinute());
+		model.addAttribute("finishHour",attendform.getFinishHour());
+		model.addAttribute("finishMinute",attendform.getFinishMinute());
+		model.addAttribute("restTime",attendform.getRestTime());
+		
+		attendform.setEmployeeNum(myform.getEmployeeNum());
+		
+		System.out.println("RegistController registConfirm : " + attendform);
 		
 		return "regist-confirm";
 	}
