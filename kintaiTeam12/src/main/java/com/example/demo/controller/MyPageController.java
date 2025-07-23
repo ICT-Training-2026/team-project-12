@@ -6,10 +6,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.form.AttendForm;
+import com.example.demo.form.InputDataForm;
 import com.example.demo.form.MyForm;
+import com.example.demo.service.SearchService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class MyPageController {
+	
+	private final SearchService service;
 	
 	// 認証画面へ戻る
 	@PostMapping("return_verified_page")
@@ -21,7 +28,7 @@ public class MyPageController {
 	}
 	
 	// 勤怠登録画面へ
-	@PostMapping("regist_attend")
+	@PostMapping("/regist_attend")
 	public String registPage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
@@ -30,27 +37,24 @@ public class MyPageController {
 	}
 	
 	// 編集・削除画面へ
-	@PostMapping("edit_delete")
-	public String editDeletePage() {
+	@PostMapping("/edit_delete")
+	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
 		
 		return "edit-delete";
 	}
 	
 	// 検索画面へ
-	@PostMapping("search_normal")
-	public String normalSearchPage() {
+	@PostMapping("/search")
+	public String searchPage(@ModelAttribute MyForm myform, @ModelAttribute InputDataForm inputform, Model model) {
 		
-//		if (true) {
-//			return "search-special";
-//		} else {
-//			return "search-normal";
-//		}
+		boolean result = service.authBridge(myform.getEmployeeNum());
+		model.addAttribute("employeenum",myform.getEmployeeNum());
 		
-		// ↓仮の返り値を設定した
-		return "search-normal";
-		
+		if(result) {
+			
+			return "search-special";
+		}else {
+			return "search-normal";
+		}
 	}
-	
-	
-
 }

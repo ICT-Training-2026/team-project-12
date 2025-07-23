@@ -34,14 +34,16 @@
 
 
     <!-- 編集・削除ボタン -->
-    <form th:action="@{edit_delete}" method="post" class="btn">
+    <form th:action="@{edit_delete}" th:object="${myForm}"  method="post" class="btn">
+		<input type="hidden" th:field="*{employeeNum}">
         <input type="submit" class="btn-icon" value="✏️">
         <p class="button-label">編集・削除</p>
     </form>
 
 
     <!-- 勤怠検索ボタン -->
-    <form th:action="@{search_normal}" method="post" class="btn">
+    <form th:action="@{search}" th:object="${myForm}"  method="post" class="btn">
+		<input type="hidden" th:field="*{employeeNum}">
         <input type="submit" class="btn-icon" value="🔍">
         <p class="button-label">勤怠検索</p>
     </form>

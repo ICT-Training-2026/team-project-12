@@ -6,45 +6,45 @@
 <link rel="stylesheet" th:href="@{/css/search.css}">
 </head>
 <body>
-   <h1>検索</h1>
-   <div class="orange-box">
-    <p class="form-group">
-        <label for="date">日付:</label>
-        <input type="date" th:field="*{}">
-    </p>
+   <h1>普通検索</h1>
+<!--   <div class="orange-box">-->
+<!--    <p class="form-group">-->
+<!--        <label for="date">日付:</label>-->
+<!--        <input type="date" th:field="*{}">-->
+<!--    </p>-->
 
 
-   <p class="form-group">
-       <label>社員名:</label>
-       <span th:text="*{}"></span>
-   </p>
+<!--   <p class="form-group">-->
+<!--       <label>社員名:</label>-->
+<!--       <span th:text="*{}"></span>-->
+<!--   </p>-->
 
 
-   <p class="form-group">
-       <label>社員番号:</label>
-	   <span th:text="*{}"></span>
-   </p>
+<!--   <p class="form-group">-->
+<!--       <label>社員番号:</label>-->
+<!--	   <span th:text="*{}"></span>-->
+<!--   </p>-->
 
 
-   <p class="form-group">
-       <label>部署:</label>
-	   <span th:text="*{}"></span>
-   </p>
+<!--   <p class="form-group">-->
+<!--       <label>部署:</label>-->
+<!--	   <span th:text="*{}"></span>-->
+<!--   </p>-->
    
-   </div>
+<!--   </div>-->
    
-   <p class="error-message" th:text="*{}"></p>
+<!--   <p class="error-message" th:text="*{}"></p>-->
    
-   <div class="box">
-    <form th:action="@{/search_normal_result}" method="post" th:object="${}">
-        <input type="submit" value="検索" class="btn">
-    </form>
-	</div>
+<!--   <div class="box">-->
+<!--    <form th:action="@{/search_normal_result}" method="post" th:object="${}">-->
+<!--        <input type="submit" value="検索" class="btn">-->
+<!--    </form>-->
+<!--	</div>-->
        
-	<div class="box">
-    <form th:action="@{/my_page}" method="post" th:object="${}">
-        <input type="submit" value="Myページ" class="btn">
-    </form>
-	</div>
+<!--	<div class="box">-->
+<!--    <form th:action="@{/my_page}" method="post" th:object="${}">-->
+<!--        <input type="submit" value="Myページ" class="btn">-->
+<!--    </form>-->
+<!--	</div>-->
 	
 </body>
