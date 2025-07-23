@@ -14,15 +14,12 @@ public class PersonalRepository {
 	public String findByCompose(String empnum) {
 		
 		String compose = "test";
-		System.out.println("Repository personalpage" + empnum);
 		
 		String sql = "SELECT DEPARTMENT_ID " +
 				 	 "FROM employees " +
 				 	 "WHERE EMPLOYEE_NUM = ? ";
 	
 		compose = jdbcTemplate.queryForObject(sql,String.class,empnum);
-		
-		System.out.println("compose : " + compose);
 		
 		return compose;
 	}
