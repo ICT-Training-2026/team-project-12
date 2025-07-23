@@ -64,19 +64,6 @@ public class ExportRepository {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
-//            for (Map<String, Object> userAttendance : userAttendances) {
-//            	System.out.println(userAttendance.get("EMPLOYEE_NUM") + " " +
-//            						(currentDate.getYear() + "-" +currentDate.getMonthValue()) + " " +
-//            						userAttendance.get("START_HOUR") + " " +
-//            						userAttendance.get("START_MINUTE") + " " +
-//            						userAttendance.get("FINISH_HOUR") + " " +
-//            						userAttendance.get("FINISH_MINUTE") + " " +
-//            						userAttendance.get("ACTUAL_WORKING_HOURS") + " " +
-//            						userAttendance.get("REST_TIME") + " " +
-//            						userAttendance.get("OVER_TIME"));
-//            }
-            
         }
     }
 }
