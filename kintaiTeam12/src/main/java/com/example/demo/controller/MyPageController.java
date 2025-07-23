@@ -15,12 +15,16 @@ public class MyPageController {
 	@PostMapping("return_verified_page")
 	public String returnVerifiedPage() {
 		
+		
+		
 		return "login-success";
 	}
 	
 	// 勤怠登録画面へ
 	@PostMapping("regist_attend")
-	public String registPage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model modelO) {
+	public String registPage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+		
+		model.addAttribute("employeenum",myform.getEmployeeNum());
 		
 		return "regist-attend";
 	}

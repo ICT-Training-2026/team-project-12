@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1 class="tytle">勤怠登録</h1>
+	
+	<p class="user-info">社員番号 <a th:text="${employeenum}"></a></p>
+	
     <form th:action="@{/regist_confirm}" method="post" th:object="${attendForm}">
         <table border="1">
             <tr>
@@ -209,6 +212,9 @@
                 </td>
             </tr>
         </table>
+		
+		<input type="hidden" th:field="*{employeeNum}">
+		
         <div class="btn-container">
             <input type="submit" value="登録する" class="btn">
         </div>
@@ -217,8 +223,11 @@
 <!--	エラー-->
 	<p th:text="${message}"></p>
 	
-    <form th:action="@{/return_mypage}" method="post">
-        <input type="submit" value="もどる" class="btn">
-    </form>
+	<form th:action="@{/return_mypage}" method="post" th:object="${myForm}">
+		
+		<input type="hidden" th:field="*{employeeNum}">
+	
+		<input type="submit" value="もどる" class="btn">
+	</form>
 </body>
 </html>

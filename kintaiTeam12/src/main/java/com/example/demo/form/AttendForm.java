@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class AttendForm {
 	
+	private String employeeNum;
+	
 	private Date year;
 	private String attendanceType;
 	private int startHour;
