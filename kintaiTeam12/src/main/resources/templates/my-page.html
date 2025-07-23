@@ -25,21 +25,21 @@
         <!-- ボタン一覧 -->
         <div class="button-group">
     <!-- 勤怠登録ボタン -->
-    <form th:action="@{/regist-attend}" method="post" class="btn">
+    <form th:action="@{regist_attend}" method="post" class="btn">
         <input type="submit" class="btn-icon" value="⏰">
         <p class="button-label">勤怠登録</p>
     </form>
 
 
     <!-- 編集・削除ボタン -->
-    <form th:action="@{/edit-delete}" method="post" class="btn">
+    <form th:action="@{edit_delete}" method="post" class="btn">
         <input type="submit" class="btn-icon" value="✏️">
         <p class="button-label">編集・削除</p>
     </form>
 
 
     <!-- 勤怠検索ボタン -->
-    <form th:action="@{/search-normal}" method="post" class="btn">
+    <form th:action="@{search_normal}" method="post" class="btn">
         <input type="submit" class="btn-icon" value="🔍">
         <p class="button-label">勤怠検索</p>
     </form>
