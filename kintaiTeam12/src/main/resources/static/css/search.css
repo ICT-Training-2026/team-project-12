@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fcebb6;
+}
+
+.tytle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    width: 100px; /* 必要に応じて調整 */
+    margin-right: 10px;
+    text-align: right;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 200px; /* 一貫した幅を設定 */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+span {
+    width: 200px; /* 日付の入力欄と同じ幅に設定 */
+    text-align: center; /* 中央揃えに設定 */
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.btn {
+    width: 250px;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000000;
+    background-color: #ffd662;
+    border-width: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #ff9203;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.orange-box {
+    background-color: rgb(249, 201, 130);
+    padding: 20px;
+    border-radius: 5px;
+    color: black;
+    width: 350px; /* 一貫した幅を設定 */
+}
+
