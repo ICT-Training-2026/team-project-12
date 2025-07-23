@@ -6,7 +6,7 @@
 <link rel="stylesheet" th:href="@{/css/style3.css}">
 </head>
 <body>
-	<p class="user-info">社員番号 <a th:text="${employeeNum}"></a></p>
+	<p class="user-info">社員番号 <a th:text="${employeenum}"></a></p>
 	
     <h1 class="tytle">以下の内容で登録してよろしいですか？</h1>
     <table border="1">
@@ -46,11 +46,20 @@
     </table>
 	
     <div>
-        <form th:action="@{/regist_attend}" method="post">
-            <input type="submit" value="もどる" class="btn">
+        <form th:action="@{return_regist_attend}" method="post" th:object="${attendForm}">
+			<input type="hidden" th:field="*{employeeNum}">
+			<input type="hidden" th:field="*{year}">
+			<input type="hidden" th:field="*{attendanceType}">
+			<input type="hidden" th:field="*{startHour}">
+			<input type="hidden" th:field="*{startMinute}">
+			<input type="hidden" th:field="*{finishHour}">
+			<input type="hidden" th:field="*{finishMinute}">
+			<input type="hidden" th:field="*{restTime}">
+			
+			<input type="submit" value="もどる" class="btn">
         </form>
 		
-        <form th:action="@{/regist_complete}" method="post" th:object="${attendForm}">
+        <form th:action="@{/regist_complete_page}" method="post" th:object="${attendForm}">
 			
 			<input type="hidden" th:field="*{employeeNum}">
 			<input type="hidden" th:field="*{year}">

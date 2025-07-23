@@ -42,7 +42,7 @@ public class RegistController {
 	@PostMapping("regist_confirm")
 	public String registConfirm(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform, Model model) {
 		
-		model.addAttribute("employeeNum",attendform.getEmployeeNum());
+		model.addAttribute("employeenum",attendform.getEmployeeNum());
 		model.addAttribute("year",attendform.getYear());
 		model.addAttribute("attendanceType",attendform.getAttendanceType());
 		model.addAttribute("startHour",attendform.getStartHour());
