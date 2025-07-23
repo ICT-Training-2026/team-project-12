@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>削除完了画面</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+	
+	<body>
+	    <h1>完了しました</h1>
+		
+	    <form th:action="@{/my_page}" method="post" th:object="${}">
+	        <input type="submit" value="Myページにもどる" class="btn">
+	    </form>
+	   
+	</body>
+</html>
