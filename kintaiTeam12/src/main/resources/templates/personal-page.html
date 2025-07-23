@@ -8,11 +8,13 @@
 </head>
 <body>
     <div>総務専用ページ</div>
-	<form th:action="@{/my-page}" method="post">
+	<form th:action="@{/my_page_personal}" th:object ="${employeeNumForm}"  method="post" >
+			<input type="hidden" th:field="*{employeeNum}">
 			<input type="submit" value="myページ" class="btn">
 		</form>
 	<br>
-	<form th:action="@{/personal-export}" method="post">
+	<form th:action="@{/personal_export}" th:object ="${employeeNumForm}" method="post">
+			<input type="hidden" th:field="*{employeeNum}">
 			<input type="submit" value="エクスポート" class="btn">
 		</form>
 </body>

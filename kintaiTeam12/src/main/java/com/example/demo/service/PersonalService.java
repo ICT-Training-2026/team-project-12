@@ -16,8 +16,6 @@ public class PersonalService {
 		
 		String tmp = "test";
 		
-		System.out.println("Service personalpage");
-		
 		tmp = repository.findByCompose(empnum);
 		
 		return tmp;
