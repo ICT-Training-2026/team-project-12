@@ -12,7 +12,7 @@ public class PersonalContoroller {
 	@PostMapping("/my_page_personal")
 	public String myPage(@ModelAttribute EmployeeNumForm empform ) {
 		
-		System.out.println(empform);
+		//System.out.println(empform);
 		
 		return "my-page";
 	}
