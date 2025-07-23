@@ -18,7 +18,7 @@ public class PersonalContoroller {
 	}
 	
 	@PostMapping("/personal_export")
-	public String exportPage() {
+	public String exportPage(@ModelAttribute EmployeeNumForm empform) {
 		
 		
 		return "personal-export";
