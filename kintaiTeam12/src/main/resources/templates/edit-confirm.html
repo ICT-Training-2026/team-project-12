@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>データ削除確認</title>
+<link rel="stylesheet" th:href="@{/css/style3.css}">
+</head>
+	<body>
+	    <h1 class="tytle">以下の内容に編集しますか?</h1>
+	    <table border="1">
+	        <tr>
+	            <th>日付</th>
+	            <td th:text="${}"></td>
+	        </tr>
+	        <tr>
+	            <th>勤怠区分</th>
+	            <td th:text="${}"></td>
+	        </tr>
+	        <tr>
+	            <th>出勤時刻</th>
+	            <td th:text="${}"></td>
+	        </tr>
+	        <tr>
+	            <th>退勤時刻</th>
+	            <td th:text="${}"></td>
+	        </tr>
+	        <tr>
+	            <th>休憩時間(分)</th>
+	            <td th:text="${}"></td>
+	        </tr>
+	    </table>
+		
+	    <div>
+	        <form th:action="@{/delete-complete}" method="post" th:object="${}">
+	            <input type="button" value="登録する" class="btn">
+	        </form>
+			
+			<form th:action="@{/edit-delete}" method="post" th:object="${}">
+				<input type="button" value="もどる" class="btn">      
+			</form>
+	    </div>
+	</body>
+</html>
