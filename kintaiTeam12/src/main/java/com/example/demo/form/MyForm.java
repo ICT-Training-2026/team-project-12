@@ -7,5 +7,6 @@ public class MyForm {
 	
 	private String name;
 	private int hours;
+	private String employeeNum;
 	
 }
