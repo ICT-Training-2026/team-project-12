@@ -15,6 +15,22 @@ public class RegistConfirmService {
 	
 	public void registBridge(Regist regist) {
 		
+		System.out.println("RegistConfirmService" + regist);
+		
+		
+		// 年休の計算
+		// 労働時間を固定
+		if("年休".equals(regist.getAttendanceType())) {
+			
+			System.out.println("if年休：起動確認");
+			
+			
+			rrepository.updateByPaidHoliday(regist);
+		}
+		
+		
+		
+		// 勤怠時間の登録
 		rrepository.addByRegist(regist);
 		
 	}
