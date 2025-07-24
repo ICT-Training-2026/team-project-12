@@ -7,13 +7,13 @@
 </head>
 <body>
     <h1 class="tytle">編集</h1>
-    <form th:action="@{/edit_confirm}" method="post" th:object="${}">
+    <form th:action="@{/edit_confirm_page}" method="post" th:object="${attendForm}">
         <table border="1">
             <tr>
                 <th>日付</th>
                 <td>    
                     <div class="form-group">
-                        <input type="date" th:field="*{}">
+                        <input type="date" th:field="*{year}">
                     </div>
                 </td>
             </tr>
@@ -21,7 +21,7 @@
                 <th>勤怠区分</th>
                 <td>
                     <div class="form-group">
-                        <select class="attend" th:field="*{}">
+                        <select class="attend" th:field="*{attendanceType}">
                             <option value="出勤">出勤</option>
                             <option value="振出">振出</option>
                             <option value="振休">振休</option>
@@ -36,7 +36,7 @@
                 <th>出勤時刻</th>
                 <td>
                     <div class="form-group">
-                        <select th:field="*{}">
+                        <select th:field="*{startHour}">
                             <option value="6">6</option>
                             <option value="7">7</option>
                             <option value="8">8</option>
@@ -56,7 +56,7 @@
                             <option value="22">22</option>
                         </select>
                         <span>:</span>
-                        <select th:field="*{}">
+                        <select th:field="*{startMinute}">
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -125,7 +125,7 @@
                 <th>退勤時刻</th>
                 <td>
                     <div class="form-group">
-                        <select th:field="*{}">
+                        <select th:field="*{finishHour}">
                             <option value="6">6</option>
                             <option value="7">7</option>
                             <option value="8">8</option>
@@ -147,7 +147,7 @@
                             <option value="24">24</option>
                         </select>
                         <span>:</span>
-                        <select th:field="*{}">
+                        <select th:field="*{finishMinute}">
                             <option value="0">00</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -216,22 +216,24 @@
                 <th>休憩時間(分)</th>
                 <td>
                     <div class="form-group">
-                        <input type="number" min="0" th:field="*{}">
+                        <input type="number" min="0" th:field="*{restTime}">
                     </div>
                 </td>
             </tr>
         </table>
+		
+		<input type="hidden" th:field="*{employeeNum}">
       
         <div class="btn-container">
-            <input type="submit" value="編集確定" class="btn" th:field="*{}">
+            <input type="submit" value="編集確定" class="btn">
         </div>
        
     </form>
 	
     <!--	エラー-->
-	<p th:text="${}"></p>
+<!--	<p th:text="${}"></p>-->
    
-    <form th:action="@{/edit_delete}" method="post" th:object="${}">
+    <form th:action="@{/return_edit_delete}" method="post" th:object="${myForm}">
 		<input type="submit" value="もどる" class="btn">
     </form>
 </body>
