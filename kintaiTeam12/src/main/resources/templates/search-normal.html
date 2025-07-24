@@ -8,7 +8,7 @@
 <body>
    <h1>普通検索</h1>
    <div class="orange-box">
-      <form th:action="@{/search_special_result}" th:object="${inputDataForm}" method="post">
+      <form th:action="@{/search_normal_result}" th:object="${inputDataForm}" method="post">
          <p class="form-group">
             <label for="date">日付:</label>
             <input type="date" th:field="*{date}" required>
@@ -26,12 +26,15 @@
 
          <p class="form-group">
             <label for="department">部署:</label>
-            <span th:text="${composeId}"></span>
+            <span th:text="${composeName}"></span>
          </p>
 
          <div class="box">
 <!--            <input type="hidden" th:field="*{employeeNum}">-->
-			
+			<input type="hidden" th:field="*{employeeNum}">
+			<input type="hidden" th:field="*{empName}">
+			<input type="hidden" th:field="*{empNum}">
+			<input type="hidden" th:field="*{composeId}">
             <input type="submit" value="検索" class="btn">
          </div>
       </form>

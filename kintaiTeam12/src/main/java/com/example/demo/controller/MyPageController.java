@@ -54,6 +54,7 @@ public class MyPageController {
 		if(result) {
 			return "search-special";
 		}else {
+			//System.out.println("TEST");
 			
 			InputData data = new InputData();
 			
@@ -63,7 +64,7 @@ public class MyPageController {
 			
 			model.addAttribute("empName",data.getEmpName());
 			model.addAttribute("empNum",myform.getEmployeeNum());
-			model.addAttribute("composeId",data.getComposeId());
+			model.addAttribute("composeName",data.getComposeName());
 			
 			inputform.setEmployeeNum(myform.getEmployeeNum());
 			inputform.setEmpName(data.getEmpName());
