@@ -9,7 +9,7 @@
 	<body>
 	    <h1>完了しました</h1>
 		
-	    <form th:action="@{/my_page}" method="post" th:object="${}">
+	    <form th:action="@{/delete_return_mypage}" method="post" th:object="${attendForm}">
 	        <input type="submit" value="Myページにもどる" class="btn">
 	    </form>
 	   
