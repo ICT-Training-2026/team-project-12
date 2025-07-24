@@ -52,7 +52,25 @@ public class RegistController {
 		model.addAttribute("restTime",attendform.getRestTime());
 		
 		attendform.setEmployeeNum(myform.getEmployeeNum());
+
 		
+		// 年休のとき、労働時間を固定
+		if ("年休".equals(attendform.getAttendanceType())) {
+
+			System.out.println("if年休 時間固定：起動確認");
+
+			attendform.setStartHour(9);
+			attendform.setStartMinute(0);
+			attendform.setFinishHour(16);
+			attendform.setFinishMinute(0);
+			
+			model.addAttribute("startHour",attendform.getStartHour());
+			model.addAttribute("startMinute",attendform.getStartMinute());
+			model.addAttribute("finishHour",attendform.getFinishHour());
+			model.addAttribute("finishMinute",attendform.getFinishMinute());
+			
+		}
+
 		System.out.println("RegistController registConfirm : " + attendform);
 		
 		return "regist-confirm";

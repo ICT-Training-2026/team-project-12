@@ -36,6 +36,7 @@ public class RegistConfirmController {
 		
 		regist.setEmployeeNum(attendform.getEmployeeNum());
 		regist.setYear(attendform.getYear());
+		regist.setAttendanceType(attendform.getAttendanceType());
 		regist.setStartHour(attendform.getStartHour());
 		regist.setStartMinute(attendform.getStartMinute());
 		regist.setFinishHour(attendform.getFinishHour());
