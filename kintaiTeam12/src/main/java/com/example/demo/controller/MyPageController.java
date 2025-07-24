@@ -40,8 +40,11 @@ public class MyPageController {
 	@PostMapping("/edit_delete")
 	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
 		
+		model.addAttribute("employeenum",myform.getEmployeeNum());
+		
 		return "edit-delete";
 	}
+	
 	
 	// 検索画面へ
 	@PostMapping("/search")
