@@ -41,10 +41,29 @@ public class RegistConfirmRepository {
 	}
 	
 	
+	// 振出の計算
+	public void updateByPlusSubstitudeHoliday(Regist regist) {
+		
+		String sql = "UPDATE EMPLOYEES e "
+				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
+				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
+				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+				
+		
+		jdbcTemplate.update(sql, regist.getEmployeeNum());
+		
+	}
+	
 	// 振休の計算
-	public void updateBySubstitudeHoliday(Regist regist) {
+	public void updateByMinusSubstitudeHoliday(Regist regist) {
 		
+		String sql = "UPDATE EMPLOYEES e "
+				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
+				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
+				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+				
 		
+		jdbcTemplate.update(sql, regist.getEmployeeNum());
 		
 	}
 	
