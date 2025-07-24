@@ -20,7 +20,7 @@ public class RegistConfirmController {
 	
 	// 勤怠登録画面へ戻る
 	@PostMapping("return_regist_attend")
-	public String returnRegistAttend(@ModelAttribute AttendForm attendform, Model model) {
+	public String returnRegistAttend(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform, Model model) {
 		
 		model.addAttribute("employeenum",attendform.getEmployeeNum());
 		

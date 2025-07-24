@@ -29,6 +29,25 @@ public class RegistConfirmService {
 		}
 		
 		
+		// 振出の計算
+		if("振出".equals(regist.getAttendanceType())) {
+			
+			System.out.println("if振出：起動確認");
+			
+			rrepository.updateByPlusSubstitudeHoliday(regist);
+			
+		}
+		
+		
+		// 振休の計算
+		if ("振休".equals(regist.getAttendanceType())) {
+			
+			System.out.println("if振休：起動確認");
+
+			rrepository.updateByMinusSubstitudeHoliday(regist);
+
+		}
+		
 		
 		// 勤怠時間の登録
 		rrepository.addByRegist(regist);
