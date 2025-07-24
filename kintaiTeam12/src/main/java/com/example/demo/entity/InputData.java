@@ -13,4 +13,5 @@ public class InputData {
 	private String empName;
 	private String empNum;
 	private String composeId;
+	private String composeName;
 }

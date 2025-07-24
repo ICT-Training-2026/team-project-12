@@ -15,7 +15,7 @@ public class PersonalRepository {
 		
 		String compose = "test";
 		
-		String sql = "SELECT DEPARTMENT_ID " +
+		String sql = "SELECT COMPOSE_ID " +
 				 	 "FROM employees " +
 				 	 "WHERE EMPLOYEE_NUM = ? ";
 	

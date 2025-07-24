@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.InputData;
 import com.example.demo.form.AttendForm;
 import com.example.demo.form.InputDataForm;
 import com.example.demo.form.MyForm;
@@ -56,6 +57,23 @@ public class MyPageController {
 		if(result) {
 			return "search-special";
 		}else {
+			//System.out.println("TEST");
+			
+			InputData data = new InputData();
+			
+			data = service.NormalEmployeeInfo(myform.getEmployeeNum());
+			
+			System.out.println(data);
+			
+			model.addAttribute("empName",data.getEmpName());
+			model.addAttribute("empNum",myform.getEmployeeNum());
+			model.addAttribute("composeName",data.getComposeName());
+			
+			inputform.setEmployeeNum(myform.getEmployeeNum());
+			inputform.setEmpName(data.getEmpName());
+			inputform.setEmpNum(myform.getEmployeeNum());
+			inputform.setComposeId(data.getComposeId());
+			
 			return "search-normal";
 		}
 	}
