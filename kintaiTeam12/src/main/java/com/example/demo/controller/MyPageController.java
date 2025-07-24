@@ -51,7 +51,6 @@ public class MyPageController {
 		model.addAttribute("employeenum",myform.getEmployeeNum());
 		
 		if(result) {
-			
 			return "search-special";
 		}else {
 			return "search-normal";

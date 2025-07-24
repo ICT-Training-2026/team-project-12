@@ -7,11 +7,15 @@
 </head>
 <body>
 
-<div th:if="${リスト名} == null">
+<div th:if="${resultList} == null">
 	<h1 class="tytle">勤怠データが存在しません</h1>
+	<form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post" >
+		<input type="hidden" th:field="*{employeeNum}">
+		<input type="submit" value=MYページにもどる class="btn">
+	</form>
 </div>
 
-<div th:if="${リスト名} != null">
+<div th:if="${resultList} != null">
     <h1 class="tytle">検索結果</h1>
 
     <table border="1">
@@ -19,23 +23,26 @@
             <th>日付</th><th>社員名</th><th>部署</th><th>出勤区分</th><th>出勤時間</th><th>退勤時間</th><th>休憩(分)</th>
         </tr>
 
-        <tr th:each="要素を格納する変数 : ${リスト}">
+        <tr th:each="result : ${resultList}">
             
-            <td th:text="${要素を格納した変数.日付の列名}"></td>
-			<td th:text="${要素を格納した変数.社員名の列名}"></td>
-			<td th:text="${要素を格納した変数.部署の列名}"></td>
-            <td th:text="${要素を格納した変数.出勤区分の列名}"></td>
-            <td th:text="${要素を格納した変数.出勤時間の列名}"></td>
-            <td th:text="${要素を格納した変数.退勤時間の列名}"></td>
-            <td th:text="${要素を格納した変数.休憩の列名}"></td>
+            <td th:text="${result.date}"></td>
+			<td th:text="${result.empName}"></td>
+			<td th:text="${result.composeId}"></td>
+            <td th:text="${result.attendanceType}"></td>
+            <td th:text="${result.startTime}"></td>
+            <td th:text="${result.finishTime}"></td>
+            <td th:text="${result.restTime}"></td>
         </tr>
-
     </table>
-</div>
 
-    <form th:action="@{/my_page}" method="post"　th:object="${}">
-        <input type="submit" value=MYページにもどる class="btn">
+
+	
+    <form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post" >
+		<input type="hidden" th:field="*{employeeNum}">
+		<input type="submit" value=MYページにもどる class="btn">
     </form>
+
+	</div>
    
 </body>
 </html>

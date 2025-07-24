@@ -8,16 +8,16 @@
 <body>
    <h1>特殊検索</h1>
    <div class="orange-box">
-		<form th:action="@{/search_normal_result}" th:object="${inputData}" method="post" th:object="${}">
+		<form th:action="@{/search_special_result}" th:object="${inputDataForm}" method="post">
     		<p class="form-group">
         		<label for="date">日付:</label>
-        		<input type="date" th:field="*{date}">
+        		<input type="date" th:field="*{date}" required>
     		</p>
 
 
    			<p class="form-group">
        			<label for="employee-name">社員名:</label>
-       			<input type="text" th:field="*{empName}">
+       			<input type="text" th:field="*{empName}" >
    			</p>
 
 
@@ -30,8 +30,9 @@
 			<p class="form-group">
 				<label for="department">部署:</label>
 				<select class="attend" th:field="*{composeId}">
+					<option value="0" >未選択</option>
 					<option value="1" >総務部総務1課</option>
-				    <option value="2" selected>総務部総務2課</option>
+				    <option value="2" >総務部総務2課</option>
 				    <option value="3">開発部開発1課</option>
 				    <option value="4">開発部開発2課</option>
 				    <option value="5">開発部開発3課</option>
@@ -49,7 +50,8 @@
    
 <!--   <p class="error-message" th:text="*{}">該当するデータがありません</p>-->
    <div class="box">
-    <form th:action="@{/my_page_sp}" method="post" th:object="${}">
+    <form th:action="@{/my_page_sp}" th:object="${myForm}" method="post">
+		<input type="hidden" th:field="*{employeeNum}">
         <input type="submit" value="Myページ" class="btn">
     </form>
    </div>
