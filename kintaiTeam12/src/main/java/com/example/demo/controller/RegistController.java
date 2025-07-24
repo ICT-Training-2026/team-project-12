@@ -51,7 +51,7 @@ public class RegistController {
 			
 			System.out.println("動作確認入力エラー");
 			
-			model.addAttribute("message","");
+			model.addAttribute("message","日付を入力してください");
 			
 			return "regist-attend";
 		}
