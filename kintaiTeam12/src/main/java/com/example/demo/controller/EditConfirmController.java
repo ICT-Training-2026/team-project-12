@@ -5,9 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.Edit;
 import com.example.demo.form.AttendForm;
 import com.example.demo.form.MyForm;
-import com.example.demo.service.NameService;
+import com.example.demo.service.EditConfirmService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EditConfirmController {
 	
-	private final NameService nservice;
+	private final EditConfirmService eservice;
 	
 	
 	// 編集画面へ戻る
@@ -33,20 +34,20 @@ public class EditConfirmController {
 	@PostMapping("edit_complete_page")
 	public String editCompletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform, Model model) {
 		
-//		Regist regist = new Regist();
+		Edit edit = new Edit();
 		
-//		regist.setEmployeeNum(attendform.getEmployeeNum());
-//		regist.setYear(attendform.getYear());
-//		regist.setStartHour(attendform.getStartHour());
-//		regist.setStartMinute(attendform.getStartMinute());
-//		regist.setFinishHour(attendform.getFinishHour());
-//		regist.setFinishMinute(attendform.getFinishMinute());
-//		regist.setRestTime(attendform.getRestTime());
-//		
-//		
-//		rservice.registBridge(regist);
-//		
-//		model.addAttribute("employeenum",attendform.getEmployeeNum());
+		edit.setEmployeeNum(attendform.getEmployeeNum());
+		edit.setYear(attendform.getYear());
+		edit.setStartHour(attendform.getStartHour());
+		edit.setStartMinute(attendform.getStartMinute());
+		edit.setFinishHour(attendform.getFinishHour());
+		edit.setFinishMinute(attendform.getFinishMinute());
+		edit.setRestTime(attendform.getRestTime());
+		
+		
+		eservice.editBridge(edit);
+		
+		model.addAttribute("employeenum",attendform.getEmployeeNum());
 		
 		return "edit-complete";
 	}
