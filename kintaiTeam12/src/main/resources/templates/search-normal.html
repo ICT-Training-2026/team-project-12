@@ -7,53 +7,41 @@
 </head>
 <body>
    <h1>普通検索</h1>
-      <div class="orange-box">
-   		<form th:action="@{/search_special_result}" th:object="${inputDataForm}" method="post">
-       		<p class="form-group">
-           		<label for="date">日付:</label>
-           		<input type="date" th:field="*{date}" required>
-       		</p>
+   <div class="orange-box">
+      <form th:action="@{/search_special_result}" th:object="${inputDataForm}" method="post">
+         <p class="form-group">
+            <label for="date">日付:</label>
+            <input type="date" th:field="*{date}" required>
+         </p>
 
+         <p class="form-group">     
+            <label for="employee-name">社員名:</label> 
+            <span th:text="${empName}"></span>
+         </p>
 
-      			<p class="form-group">
-          			<label for="employee-name">社員名:</label>
-          			<input type="text" th:field="*{empName}" >
-      			</p>
+         <p class="form-group">
+            <label for="employee-number">社員番号:</label>  
+            <span th:text="${empNum}"></span>
+         </p>
 
+         <p class="form-group">
+            <label for="department">部署:</label>
+            <span th:text="${composeId}"></span>
+         </p>
 
-      			<p class="form-group">
-          			<label for="employee-number">社員番号:</label>
-          			<input type="text" th:field="*{empNum}">
-      			</p>
+         <div class="box">
+<!--            <input type="hidden" th:field="*{employeeNum}">-->
+			
+            <input type="submit" value="検索" class="btn">
+         </div>
+      </form>
+   </div>
 
-   			
-   			<p class="form-group">
-   				<label for="department">部署:</label>
-   				<select class="attend" th:field="*{composeId}">
-   					<option value="0" >未選択</option>
-   					<option value="1" >総務部総務1課</option>
-   				    <option value="2" >総務部総務2課</option>
-   				    <option value="3">開発部開発1課</option>
-   				    <option value="4">開発部開発2課</option>
-   				    <option value="5">開発部開発3課</option>
-   				    <option value="6">営業部営業1課</option>
-   					<option value="7">営業部営業2課</option>
-   				</select>
-   			</p>
-   			
-   			<div class="box">
-   				<input type="hidden" th:field="*{employeeNum}">
-   				<input type="submit" value="検索" class="btn">
-   			</div>
-   		</form>
-      </div>
-      
-   <!--   <p class="error-message" th:text="*{}">該当するデータがありません</p>-->
-      <div class="box">
-       <form th:action="@{/my_page_sp}" th:object="${myForm}" method="post">
-   		<input type="hidden" th:field="*{employeeNum}">
-           <input type="submit" value="Myページ" class="btn">
-       </form>
-      </div>
-	
+   <div class="box">
+      <form th:action="@{/my_page_sp}" th:object="${myForm}" method="post">
+         <input type="hidden" th:field="*{employeeNum}">
+         <input type="submit" value="Myページ" class="btn">
+      </form>
+   </div>
 </body>
+</html>

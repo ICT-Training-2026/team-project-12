@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.MyPage;
 import com.example.demo.form.EmployeeNumForm;
+import com.example.demo.form.MyForm;
 import com.example.demo.service.ExportService;
 import com.example.demo.service.NameService;
 
@@ -21,9 +22,9 @@ public class PersonalContoroller {
 	private final ExportService eservice;
 	
 	@PostMapping("/my_page_personal")
-	public String myPage(@ModelAttribute EmployeeNumForm empform, Model model) {
+	public String myPage(@ModelAttribute EmployeeNumForm empform, Model model,@ModelAttribute MyForm myform) {
 		
-		//System.out.println(empform);
+		System.out.println(empform);
 		
 		MyPage tmp = new MyPage();
 		
