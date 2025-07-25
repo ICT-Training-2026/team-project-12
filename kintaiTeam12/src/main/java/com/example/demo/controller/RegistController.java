@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.MyPage;
+import com.example.demo.entity.Regist;
 import com.example.demo.form.AttendForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.HolidayService;
 import com.example.demo.service.NameService;
+import com.example.demo.service.RegistExistService;
 import com.example.demo.service.SubstitudeService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ public class RegistController {
 	private final NameService nservice;
 	private final HolidayService hservice;
 	private final SubstitudeService sservice;
+	private final RegistExistService reservice;
 	
 	
 	// マイページへ戻る
@@ -83,10 +86,10 @@ public class RegistController {
 		
 		
 		// 会社休日の日に申請できない区分のエラー文表示
-		if(("年休".equals(attendform.getAttendanceType()) || "振休".equals(attendform.getAttendanceType()) || "欠勤".equals(attendform.getAttendanceType())) && compose) {
+		if(("出勤".equals(attendform.getAttendanceType()) || "年休".equals(attendform.getAttendanceType()) || "振休".equals(attendform.getAttendanceType()) || "欠勤".equals(attendform.getAttendanceType())) && compose) {
 			
 			
-			model.addAttribute("message","年休・振休・欠勤は会社休日の日に取得できません");
+			model.addAttribute("message","出勤・年休・振休・欠勤は会社休日の日に申請できません");
 			
 			return "regist-attend";
 		}
@@ -108,7 +111,7 @@ public class RegistController {
 		if("休日".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType()) && !compose) {
 			
 			
-			model.addAttribute("message","休日と振出は平日に取得できません");
+			model.addAttribute("message","休日と振出は平日に申請できません");
 			
 			return "regist-attend";
 		}
@@ -129,6 +132,22 @@ public class RegistController {
 		
 		
 		
+		// 二重登録時にエラー表示
+		
+		Regist regist = new Regist();
+		
+		regist.setEmployeeNum(attendform.getEmployeeNum());
+		regist.setYear(attendform.getYear());
+		
+		boolean attendance = reservice.attendanceBridge(regist);
+		
+		if (attendance) {
+
+			model.addAttribute("message", "選択している日付は既に勤怠登録されています");
+
+			return "regist-attend";
+
+		}
 		
 		// 年休のとき、労働時間を固定
 		if ("年休".equals(attendform.getAttendanceType())) {
