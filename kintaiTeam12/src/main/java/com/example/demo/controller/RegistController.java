@@ -93,6 +93,14 @@ public class RegistController {
 		}
 		
 		
+		// 休憩時間が4桁以上の時にエラー表示
+		if (attendform.getRestTime() > 999) {
+			
+			model.addAttribute("message", "休憩時間は４桁以上にできません");
+
+			return "regist-attend";
+			
+		}
 		
 		
 		// 年休・振休が休日になるときにエラーを返す
