@@ -44,6 +44,7 @@ public class MyPageController {
 	// 編集・削除画面へ
 	@PostMapping("/edit_delete")
 	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
 		
@@ -53,7 +54,6 @@ public class MyPageController {
 			model.addAttribute("resultList",summaries);
 		}
 		
-		//empnumform.setEmployeeNum(inputdataform.getEmployeeNum());
 		
 		return "edit-delete";
 	}

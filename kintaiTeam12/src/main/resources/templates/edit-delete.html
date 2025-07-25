@@ -18,46 +18,58 @@
     <div th:if="${resultList} != null">
         <h1 class="tytle">検索結果</h1>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ボタン</th>
-                    <th>勤怠ID</th>
-                    <th>日付</th>
-                    <th>社員名</th>
-                    <th>出勤区分</th>
-                    <th>出勤時</th>
-                    <th>出勤分</th>
-                    <th>退勤時間</th>
-                    <th>退勤分</th>
-                    <th>休憩(分)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="result : ${resultList}">
-                    <td>
-                        <input type="radio" name="attendanceId" th:value="${result.attendanceId}" required>
-                    </td>
-                    <td th:text="${result.attendanceId}"></td>
-                    <td th:text="${result.date}"></td>
-                    <td th:text="${result.empName}"></td>
-                    <td th:text="${result.attendanceType}"></td>
-                    <td th:text="${result.startHour}"></td>
-                    <td th:text="${result.startMinute}"></td>
-                    <td th:text="${result.finishHour}"></td>
-                    <td th:text="${result.finishMinute}"></td>
-                    <td th:text="${result.restTime}"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="button-container">
-            <form th:action="@{/edit}" method="post">
-                <input type="submit" value="編集" class="tbtn">
-            </form>
-            <form th:action="@{/delete}" method="post">
-                <input type="submit" value="削除" class="tbtn">
-            </form>
+        <div class="table-container"> <!-- スクロール可能なコンテナ -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>編集</th>
+                        <th>削除</th>
+                        <th>勤怠ID</th>
+                        <th>日付</th>
+                        <th>社員名</th>
+                        <th>出勤区分</th>
+                        <th>出勤時</th>
+                        <th>出勤分</th>
+                        <th>退勤時間</th>
+                        <th>退勤分</th>
+                        <th>休憩(分)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="result : ${resultList}">
+                        <td>
+                            <form th:action="@{/edit}" method="post">
+                                <input type="submit" value="編集" class="tbtn">
+                            </form>
+                        </td>
+                        <td>
+                            <form th:action="@{/delete}" method="post">
+								<input type="hidden" name="employeeNum"       th:value="${result.employeeNum}">
+								<input type="hidden" name="attendanceId"       th:value="${result.attendanceId}">
+								<input type="hidden" name="date"       th:value="${result.date}">
+								<input type="hidden" name="empName"       th:value="${result.empName}">
+								<input type="hidden" name="attendanceType"       th:value="${result.attendanceType}">
+								<input type="hidden" name="startHour"       th:value="${result.startHour}">
+								<input type="hidden" name="startMinute"       th:value="${result.startMinute}">
+								<input type="hidden" name="finishHour"       th:value="${result.finishHour}">
+								<input type="hidden" name="finishMinute"       th:value="${result.finishMinute}">
+								<input type="hidden" name="restTime"       th:value="${result.restTime}">
+								
+                                <input type="submit" value="削除" class="tbtn">
+                            </form>
+                        </td>
+                        <td th:text="${result.attendanceId}"></td>
+                        <td th:text="${result.date}"></td>
+                        <td th:text="${result.empName}"></td>
+                        <td th:text="${result.attendanceType}"></td>
+                        <td th:text="${result.startHour}"></td>
+                        <td th:text="${result.startMinute}"></td>
+                        <td th:text="${result.finishHour}"></td>
+                        <td th:text="${result.finishMinute}"></td>
+                        <td th:text="${result.restTime}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

@@ -23,14 +23,14 @@ public class DeleteConfirmService {
 	    	
 	    } 
 	    
-	    if ("振休".equals(delete.getAttendanceType())) {
+	    if ("振休".equals(delete.getAttendanceType()) ){
 	    	
 	        // 振休の削除に伴い、振休の残数を増やす
 	    	drepository.updateByPlusSubstitudeHoliday(delete);
 	    	
 	    }
 	    
-	    if ("振出".equals(delete.getAttendanceType())) {
+	    if ("振出".equals(delete.getAttendanceType()) ){
 	    	
 	        // 振休の削除に伴い、振休の残数を増やす
 	    	drepository.updateByMinusSubstitudeHoliday(delete);
