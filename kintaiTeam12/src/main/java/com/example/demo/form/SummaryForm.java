@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class SummaryForm {
-private String employeeNum;
+	private String employeeNum;
 	
 	private int attendanceId;
 	private Date date;

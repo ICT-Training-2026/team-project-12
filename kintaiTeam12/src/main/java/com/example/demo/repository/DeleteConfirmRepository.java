@@ -18,18 +18,9 @@ public class DeleteConfirmRepository {
 	    // 勤怠データを削除するSQL
 	    String sql = "DELETE "
 	    		+ "FROM ATTENDANCES "
-	    		+ "WHERE EMPLOYEE_NUM = ? "
-	    		+ "AND YEAR = ? "
-	    		+ "AND ATTENDANCE_TYPE = ? "
-	    		+ "AND START_HOUR = ? "
-	    		+ "AND START_MINUTE = ? "
-	    		+ "AND FINISH_HOUR = ? "
-	    		+ "AND FINISH_MINUTE = ?";
+	    		+ "WHERE ATTENDANCE_ID = ? ";
 
-	    jdbcTemplate.update(sql, delete.getEmployeeNum()
-	    		, delete.getYear(), delete.getAttendanceType()
-	    		, delete.getStartHour(), delete.getStartMinute()
-	    		, delete.getFinishHour(), delete.getFinishMinute());
+	    jdbcTemplate.update(sql,  delete.getAttendanceId());
 	}
 
 	// 年休削除後の更新
@@ -50,6 +41,8 @@ public class DeleteConfirmRepository {
 				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
 				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
 				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+		
+		jdbcTemplate.update(sql, delete.getEmployeeNum());
 	  
 	}
 	
@@ -61,5 +54,6 @@ public class DeleteConfirmRepository {
 					+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
 					+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
 		  
+			jdbcTemplate.update(sql, delete.getEmployeeNum());
 	}
 }

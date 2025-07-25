@@ -37,31 +37,34 @@
     </table>
 	
     <div>
-        <form th:action="@{/delete_complete_page}" method="post" th:object="${attendForm}">
-			<input type="hidden" th:field="*{employeeNum}">
-			<input type="hidden" th:field="*{year}">
-			<input type="hidden" th:field="*{attendanceType}">
-			<input type="hidden" th:field="*{startHour}">
-			<input type="hidden" th:field="*{startMinute}">
-			<input type="hidden" th:field="*{finishHour}">
-			<input type="hidden" th:field="*{finishMinute}">
-			<input type="hidden" th:field="*{restTime}">
+        <form th:action="@{/delete_complete_page}" method="post" th:object="${summaryForm}">
+			
+				<input type="hidden" name="employeeNum" th:field="*{employeeNum}">
+				<input type="hidden" name="attendanceId" th:field="*{attendanceId}">
+				<input type="hidden" name="date" th:field="*{date}">
+				<input type="hidden" name="empName" th:field="*{empName}">
+				<input type="hidden" name="attendanceType" th:field="*{attendanceType}">
+				<input type="hidden" name="startHour" th:field="*{startHour}">
+				<input type="hidden" name="startMinute" th:field="*{startMinute}">
+				<input type="hidden" name="finishHour" th:field="*{finishHour}">	
+				<input type="hidden" name="finishMinute" th:field="*{finishMinute}">
+				<input type="hidden" name="restTime" th:field="*{restTime}">
 			
             <input type="submit" value="削除確定" class="btn">
         </form>
-		
-		<form th:action="@{/return_edit_delete2}" method="post" th:object="${attendForm}">
-			<input type="hidden" th:field="*{employeeNum}">
-			<input type="hidden" th:field="*{year}">
-			<input type="hidden" th:field="*{attendanceType}">
-			<input type="hidden" th:field="*{startHour}">
-			<input type="hidden" th:field="*{startMinute}">
-			<input type="hidden" th:field="*{finishHour}">
-			<input type="hidden" th:field="*{finishMinute}">
-			<input type="hidden" th:field="*{restTime}">
+	</div>
+<!--		<form th:action="@{/return_edit_delete2}" method="post" th:object="${attendForm}">-->
+<!--			<input type="hidden" th:field="*{employeeNum}">-->
+<!--			<input type="hidden" th:field="*{year}">-->
+<!--			<input type="hidden" th:field="*{attendanceType}">-->
+<!--			<input type="hidden" th:field="*{startHour}">-->
+<!--			<input type="hidden" th:field="*{startMinute}">-->
+<!--			<input type="hidden" th:field="*{finishHour}">-->
+<!--			<input type="hidden" th:field="*{finishMinute}">-->
+<!--			<input type="hidden" th:field="*{restTime}">-->
 			
-			<input type="submit" value="もどる" class="btn">          
-		</form>
+<!--			<input type="submit" value="もどる" class="btn">          -->
+<!--		</form>-->
     </div>
 	
 </body>
