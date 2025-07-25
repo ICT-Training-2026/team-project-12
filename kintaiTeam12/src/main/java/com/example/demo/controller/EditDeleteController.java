@@ -5,7 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.MyPage;
+import com.example.demo.form.MyForm;
 import com.example.demo.form.SummaryForm;
+import com.example.demo.service.NameService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,10 +16,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EditDeleteController {
 	
+	private final NameService nservice;
 	
 	// マイページへ戻る
 	@PostMapping("edit_delete_return_mypage")
-	public String returnMyPage() {		
+	public String returnMyPage(@ModelAttribute MyForm myform, Model model) {		
+		
+		MyPage tmp = new MyPage();
+		
+		System.out.println(myform);
+		
+		tmp = nservice.MyReference(myform.getEmployeeNum());
+		
+		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("name",tmp.getName());
+		model.addAttribute("hours",tmp.getHours());
 		
 		return "my-page";
 	}
@@ -31,7 +45,7 @@ public class EditDeleteController {
 	
 	
 	@PostMapping("delete")
-	public String deletePage(@ModelAttribute SummaryForm summaryform, Model model){
+	public String deletePage(@ModelAttribute SummaryForm summaryform, Model model,@ModelAttribute MyForm myform){
 		
 		System.out.println(summaryform);
 		

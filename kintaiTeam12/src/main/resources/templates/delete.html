@@ -53,18 +53,11 @@
             <input type="submit" value="削除確定" class="btn">
         </form>
 	</div>
-<!--		<form th:action="@{/return_edit_delete2}" method="post" th:object="${attendForm}">-->
-<!--			<input type="hidden" th:field="*{employeeNum}">-->
-<!--			<input type="hidden" th:field="*{year}">-->
-<!--			<input type="hidden" th:field="*{attendanceType}">-->
-<!--			<input type="hidden" th:field="*{startHour}">-->
-<!--			<input type="hidden" th:field="*{startMinute}">-->
-<!--			<input type="hidden" th:field="*{finishHour}">-->
-<!--			<input type="hidden" th:field="*{finishMinute}">-->
-<!--			<input type="hidden" th:field="*{restTime}">-->
+		<form th:action="@{/return_edit_delete2}" method="post" th:object="${myForm}">
+			<input type="hidden" th:field="*{employeeNum}">
 			
-<!--			<input type="submit" value="もどる" class="btn">          -->
-<!--		</form>-->
+			<input type="submit" value="もどる" class="btn">          
+		</form>
     </div>
 	
 </body>

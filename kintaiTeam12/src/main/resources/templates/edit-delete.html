@@ -73,7 +73,8 @@
         </div>
     </div>
 
-    <form th:action="@{/edit_delete_return_mypage}" method="post" th:object="${attendForm}">
+    <form th:action="@{/edit_delete_return_mypage}" method="post" th:object="${myForm}">
+		<input type="hidden" th:field="*{employeeNum}">
         <input type="submit" value="MYページにもどる" class="btn">
     </form>
 </body>
