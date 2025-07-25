@@ -8,7 +8,6 @@
 <body>
     <h1 class="tytle">勤怠登録</h1>
 	
-	<p class="user-info">社員番号 <a th:text="${employeenum}"></a></p>
 	
     <form th:action="@{regist_confirm}" method="post" th:object="${attendForm}">
         <table border="1">
@@ -204,7 +203,7 @@
             <tr>
                 <th>休憩時間(分)</th>
                 <td>
-                    <input type="number" min="0" th:field="*{restTime}">
+                    <input type="number" min="0" th:field="*{restTime}" required>
                 </td>
             </tr>
         </table>
