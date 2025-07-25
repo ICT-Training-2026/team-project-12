@@ -1,12 +1,12 @@
-package com.example.demo.entity;
+package com.example.demo.form;
 
 import java.sql.Date;
 
 import lombok.Data;
 
 @Data
-public class Summary {
-	private String employeeNum;
+public class SummaryForm {
+private String employeeNum;
 	
 	private int attendanceId;
 	private Date date;
