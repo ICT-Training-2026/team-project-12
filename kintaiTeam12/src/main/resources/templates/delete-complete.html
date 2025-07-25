@@ -9,8 +9,9 @@
 	<body>
 	    <h1>完了しました</h1>
 		
-	    <form th:action="@{/delete_return_mypage}" method="post" th:object="${attendForm}">
-	        <input type="submit" value="Myページにもどる" class="btn">
+	    <form th:action="@{/delete_return_mypage}" method="post" th:object="${myForm}">
+			<input type="hidden" th:field="*{employeeNum}">
+			<input type="submit" value="Myページにもどる" class="btn">
 	    </form>
 	   
 	</body>
