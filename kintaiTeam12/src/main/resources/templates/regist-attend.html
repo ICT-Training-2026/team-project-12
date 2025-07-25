@@ -15,7 +15,7 @@
             <tr>
                 <th>日付</th>
                 <td>
-                    <input type="date" th:field="*{year}">
+                    <input type="date" th:field="*{year}" required>
                 </td>
             </tr>
             <tr>
@@ -35,8 +35,6 @@
                 <th>出勤時刻</th>
                 <td>
                     <select th:field="*{startHour}">
-                        <option value="6">6</option>
-                        <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9" selected>9</option>
                         <option value="10">10</option>
@@ -122,8 +120,6 @@
                 <th>退勤時刻</th>
                 <td>
                     <select th:field="*{finishHour}">
-                        <option value="6">6</option>
-                        <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>

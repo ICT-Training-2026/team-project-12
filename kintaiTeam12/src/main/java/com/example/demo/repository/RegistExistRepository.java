@@ -21,9 +21,8 @@ public class RegistExistRepository {
 				 " WHERE EMPLOYEE_NUM = ? AND YEAR = ?" + 
 				 " );";
 		
-		System.out.println("リポジトリ起動確認");
 		
-		Integer exits = jdbcTemplate.queryForObject(sql, Integer.class,regist.getEmployeeNum(), Integer.class,regist.getYear());
+		Integer exits = jdbcTemplate.queryForObject(sql, Integer.class,regist.getEmployeeNum(), regist.getYear());
 		
 		
 		

@@ -49,15 +49,6 @@ public class RegistController {
 	@PostMapping("regist_confirm")
 	public String registConfirm(@ModelAttribute MyForm myform, @Validated@ModelAttribute AttendForm attendform, Model model, BindingResult result) {
 		
-		// 入力エラー時に画面を戻す
-		if (attendform.getYear() == null) {
-			
-			System.out.println("動作確認入力エラー");
-			
-			model.addAttribute("message","日付を入力してください");
-			
-			return "regist-attend";
-		}
 		
 		
 		// 勤怠時刻の分：00で表示
@@ -74,6 +65,34 @@ public class RegistController {
 	    model.addAttribute("restTime", attendform.getRestTime());
 		
 		attendform.setEmployeeNum(myform.getEmployeeNum());
+		
+		
+		// 二重登録時にエラー表示
+		
+		Regist regist = new Regist();
+		
+		regist.setEmployeeNum(attendform.getEmployeeNum());
+		regist.setYear(attendform.getYear());
+		
+		boolean attendance = reservice.attendanceBridge(regist);
+		
+		if (attendance) {
+
+			model.addAttribute("message", "選択している日付は既に勤怠登録されています");
+
+			return "regist-attend";
+
+		}
+		
+		// 出勤・振出の退勤時刻が22:45を過ぎているときにエラー表示
+		if (("出勤".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType())) && (attendform.getFinishHour() == 22) && (attendform.getFinishMinute() > 45)) {
+			
+			model.addAttribute("message", "退勤時刻は22:45以降にできません");
+
+			return "regist-attend";
+		}
+		
+		
 		
 		
 		// 年休・振休が休日になるときにエラーを返す
@@ -131,23 +150,6 @@ public class RegistController {
 		}
 		
 		
-		
-		// 二重登録時にエラー表示
-		
-		Regist regist = new Regist();
-		
-		regist.setEmployeeNum(attendform.getEmployeeNum());
-		regist.setYear(attendform.getYear());
-		
-		boolean attendance = reservice.attendanceBridge(regist);
-		
-		if (attendance) {
-
-			model.addAttribute("message", "選択している日付は既に勤怠登録されています");
-
-			return "regist-attend";
-
-		}
 		
 		// 年休のとき、労働時間を固定
 		if ("年休".equals(attendform.getAttendanceType())) {
