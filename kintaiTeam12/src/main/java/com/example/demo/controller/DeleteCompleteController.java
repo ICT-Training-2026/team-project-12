@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.MyPage;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.NameService;
 
@@ -21,17 +22,14 @@ public class DeleteCompleteController {
 	@PostMapping("delete_return_mypage")
 	public String returnMypage(@ModelAttribute MyForm myform, Model model) {
 
-//		System.out.println("RegistController myPage : " + myform);
-//		
-//		MyPage tmp = new MyPage();
-//		
-//		
-//		tmp = nservice.MyReference(myform.getEmployeeNum());
-//		
-//		model.addAttribute("employeenum",myform.getEmployeeNum());
-//		model.addAttribute("name",tmp.getName());
-//		model.addAttribute("hours",tmp.getHours());
-//		
+		MyPage tmp = new MyPage();
+		
+		
+		tmp = nservice.MyReference(myform.getEmployeeNum());
+		
+		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("name",tmp.getName());
+		model.addAttribute("hours",tmp.getHours());
 		
 		return "my-page";
 	}
