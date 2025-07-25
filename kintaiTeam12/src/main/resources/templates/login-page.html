@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login-top</title>
 <link rel="stylesheet" th:href="@{/css/login-page.css}">
 </head>
 <body>
     <div class="container">
+		<div class="robot"></div> <!-- ロボットの要素を追加 -->
         <h1>勤怠管理アプリ</h1>
         <form class="login-page" th:action="@{/login_start}" th:object="${loginForm}" method="post">
             <div class="input-group">

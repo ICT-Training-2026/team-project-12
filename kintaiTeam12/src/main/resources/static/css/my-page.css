@@ -16,7 +16,7 @@ body {
 
 /* タイトルのスタイリング */
 h1 {
-    font-size: 48px;
+	font-size: 10vw; /* ビューポート幅に基づいてフォントサイズを設定 */
     font-weight: bold;
     color: #ffc107;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
@@ -44,7 +44,7 @@ h1 {
 .button-group {
     display: flex;
     justify-content: center;
-    gap: 30px; /* ボタンの間の余白 */
+    gap: 60px; /* ボタンの間の余白 */
     margin-top: 20px;
 }
 
@@ -52,8 +52,10 @@ h1 {
 /* ボタン全体のスタイリング */
 .btn {
     display: inline-block;
-    width: 120px;
-    height: 120px;
+    width: 60vw; /* ビューポート幅を使用してレスポンシブに */
+    height: 60vw; /* ビューポート幅を使用してレスポンシブに */
+    max-width: 200px; /* 最大サイズを設定 */
+    max-height: 200px; /* 最大サイズを設定 */
     background-color: #ffd662;
     border-radius: 50%;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
@@ -63,18 +65,16 @@ h1 {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-
-
 .btn:hover {
     transform: translateY(-5px);
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
-	background-color: #ff9203;
+    background-color: #ff9203;
 }
-
 
 /* ボタン内のアイコンのスタイリング */
 .btn-icon {
-    font-size: 36px; /* 絵文字のサイズを大きくする */
+    font-size: 4vw; /* ビューポート幅を使用してレスポンシブに */
+    font-size: 75px; /* 最大フォントサイズを設定 */
     background: none;
     border: none;
     cursor: pointer;
@@ -86,10 +86,9 @@ h1 {
     justify-content: center;
 }
 
-
 /* ボタン内のテキスト（説明ラベル）のスタイリング */
 .btn p {
-    font-size: 14px;
+    font-size: 26px;
     margin: 0;
     color: #333;
 }
