@@ -12,6 +12,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	position: relative; /* ロボットを相対的に配置するために必要 */
 }
 
 h1 {
@@ -75,3 +76,21 @@ input[type="password"] {
 .login-button:hover {
     background-color: #e0a800;
 }
+
+.robot {
+	        width: 150px; /* サイズを1.5倍に変更 */
+	        height: 150px; /* サイズを1.5倍に変更 */
+            background-image: url(robot7.png); /* ロボットの画像を指定 */
+            background-size: cover;
+            position: absolute;
+			top: -100%; /* containerの中の上部に配置 */
+			left: 0%; /* containerの中の左側に配置 */
+            animation: drop 1.3s ease-in-out forwards;
+        }
+
+@keyframes drop {
+            to {
+                top: -20px; /* 画面中央に降りてくる */
+            }
+        }
+		
