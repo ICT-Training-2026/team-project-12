@@ -1,14 +1,18 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.InputData;
+import com.example.demo.entity.Summary;
 import com.example.demo.form.AttendForm;
 import com.example.demo.form.InputDataForm;
 import com.example.demo.form.MyForm;
+import com.example.demo.service.EditDeleteService;
 import com.example.demo.service.SearchService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,12 +22,12 @@ import lombok.RequiredArgsConstructor;
 public class MyPageController {
 	
 	private final SearchService service;
+	private final EditDeleteService eservice;
 	
 	// 認証画面へ戻る
 	@PostMapping("return_verified_page")
 	public String returnVerifiedPage() {
-		
-		
+	
 		
 		return "login-success";
 	}
@@ -42,6 +46,14 @@ public class MyPageController {
 	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
+		
+		List<Summary> summaries = eservice.monthAttends(myform.getEmployeeNum());
+		
+		if(summaries.size()>0) {
+			model.addAttribute("resultList",summaries);
+		}
+		
+		//empnumform.setEmployeeNum(inputdataform.getEmployeeNum());
 		
 		return "edit-delete";
 	}
