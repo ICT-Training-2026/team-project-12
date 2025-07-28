@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.MyPage;
+import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.NameService;
 
@@ -20,7 +21,7 @@ public class DeleteCompleteController {
 	
 	// マイページへ戻る
 	@PostMapping("delete_return_mypage")
-	public String returnMypage(@ModelAttribute MyForm myform, Model model) {
+	public String returnMypage(@ModelAttribute MyForm myform, Model model,@ModelAttribute EmployeeNumForm empform) {
 
 		MyPage tmp = new MyPage();
 		
