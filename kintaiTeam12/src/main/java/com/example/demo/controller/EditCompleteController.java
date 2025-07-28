@@ -30,6 +30,8 @@ public class EditCompleteController {
 		
 		myform.setEmployeeNum(summaryform.getEmployeeNum());
 		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		tmp = nservice.MyReference(myform.getEmployeeNum());
 		
 		model.addAttribute("employeenum", myform.getEmployeeNum());

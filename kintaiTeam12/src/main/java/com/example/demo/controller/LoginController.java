@@ -35,6 +35,9 @@ public class LoginController {
 		boolean  flag = service.loginBridge(l);
 		
 		if(flag) {
+			
+			model.addAttribute("employeeNum", logform.getEmployeeNum());
+			
 			empform.setEmployeeNum(logform.getEmployeeNum());
 			return "login-success";
 		}else {

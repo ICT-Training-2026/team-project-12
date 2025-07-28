@@ -33,12 +33,15 @@ public class PersonalContoroller {
 		model.addAttribute("employeenum",empform.getEmployeeNum());
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
 		
 		return "my-page";
 	}
 	
 	@PostMapping("/personal_export")
-	public String exportPage(@ModelAttribute EmployeeNumForm empform) {
+	public String exportPage(@ModelAttribute EmployeeNumForm empform, Model model) {
+		
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
 		
 		eservice.exportBridge();
 		

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Summary;
 import com.example.demo.form.AttendForm;
+import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.form.SummaryForm;
 import com.example.demo.service.EditDeleteService;
@@ -27,9 +28,10 @@ public class EditController {
 	
 	// 編集削除のトップ画面へ戻る
 	@PostMapping("return_edit_delete")
-	public String returnEditDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+	public String returnEditDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model, @ModelAttribute EmployeeNumForm empform) {
 
 		model.addAttribute("employeenum", myform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 
 		List<Summary> summaries = eservice.monthAttends(myform.getEmployeeNum());
 
@@ -41,8 +43,9 @@ public class EditController {
 	}
 	
 	@PostMapping("edit_confirm_page")
-	public String editConfirmPage(@ModelAttribute MyForm myform, @ModelAttribute SummaryForm summaryform, Model model) {
+	public String editConfirmPage(@ModelAttribute MyForm myform, @ModelAttribute SummaryForm summaryform, Model model, @ModelAttribute EmployeeNumForm empform) {
 		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		// 勤怠時刻の分：00で表示
 		String formattedStartMinute = String.format("%02d", summaryform.getStartMinute());

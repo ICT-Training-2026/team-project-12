@@ -43,13 +43,13 @@ header {
   background-color: #ffc107;
   align-items: center;
   position: fixed;
-  top: 0; /* これを追加 */
+  top: 0;
 }
 
 h3 {
-	font-size: 24px;
-	color: #333333;
-	margin-bottom: 20px;
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
 }
 
 a {
@@ -64,10 +64,24 @@ a {
 }
 
 .nav {
-	margin-left: auto;
-	margin-right: 10px;
+    margin-left: auto;
+    margin-right: 10px;
 }
-		
+
 .header-title {
-	margin-left: 20px;
+    margin-left: 20px;
+}
+
+.header-btn {
+    background-color: #ffc107;
+    border: none;
+    color: black;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0;
+}
+
+.header-btn:hover {
+    background-color: #e0a800;
 }
