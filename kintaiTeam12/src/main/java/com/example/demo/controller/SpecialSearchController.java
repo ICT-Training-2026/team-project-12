@@ -39,6 +39,8 @@ public class SpecialSearchController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		return "my-page";
 	}
 	
@@ -58,6 +60,8 @@ public class SpecialSearchController {
 		if(tmp1.size()>0) {
 			model.addAttribute("resultList",tmp1);
 		}
+		
+		model.addAttribute("employeeNum",inputdataform.getEmployeeNum());
 		
 		empnumform.setEmployeeNum(inputdataform.getEmployeeNum());
 		
