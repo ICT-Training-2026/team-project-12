@@ -16,7 +16,7 @@ body {
 
 /* タイトルのスタイリング */
 h1 {
-	font-size: 10vw; /* ビューポート幅に基づいてフォントサイズを設定 */
+	font-size: 9.5vw; /* ビューポート幅に基づいてフォントサイズを設定 */
     font-weight: bold;
     color: #ffc107;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
@@ -54,8 +54,8 @@ h1 {
     display: inline-block;
     width: 60vw; /* ビューポート幅を使用してレスポンシブに */
     height: 60vw; /* ビューポート幅を使用してレスポンシブに */
-    max-width: 200px; /* 最大サイズを設定 */
-    max-height: 200px; /* 最大サイズを設定 */
+    max-width: 190px; /* 最大サイズを設定 */
+    max-height: 190px; /* 最大サイズを設定 */
     background-color: #ffd662;
     border-radius: 50%;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
@@ -88,7 +88,7 @@ h1 {
 
 /* ボタン内のテキスト（説明ラベル）のスタイリング */
 .btn p {
-    font-size: 26px;
+    font-size: 25px;
     margin: 0;
     color: #333;
 }
