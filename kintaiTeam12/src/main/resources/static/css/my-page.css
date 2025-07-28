@@ -122,6 +122,7 @@ h1 {
 }
 
 .back-btn {
+	margin-top: 40px;
     width: 200px; /* 幅を設定 */
     height: 50px; /* 高さを設定 */
     background-color: #ffd662; /* 背景色 */
