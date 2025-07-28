@@ -16,7 +16,18 @@ public class LogoutController {
 		System.out.println(loginform);
 		System.out.println(model);
 		
+		
+		System.out.println("###################");
 		return "logout-page";
+	}
+	
+	@PostMapping("/login_page_logout")
+	public String loginPage(@ModelAttribute LoginForm loginform,Model model) {
+		
+		System.out.println(loginform);
+		System.out.println(model);
+		
+		return "login-page";
 	}
 	
 }
