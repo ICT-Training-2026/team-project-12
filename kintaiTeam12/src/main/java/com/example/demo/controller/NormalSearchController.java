@@ -40,7 +40,7 @@ public class NormalSearchController {
 			model.addAttribute("resultList",tmp1);
 		}
 		
-	
+		model.addAttribute("employeeNum",inputdataform.getEmployeeNum());
 		
 		empnumform.setEmployeeNum(inputdataform.getEmployeeNum());
 		

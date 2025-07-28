@@ -30,6 +30,8 @@ public class NormalSearchResultController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
+		
 		return "my-page";
 	}
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.Delete;
 import com.example.demo.entity.Summary;
 import com.example.demo.form.AttendForm;
+import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.form.SummaryForm;
 import com.example.demo.service.DeleteConfirmService;
@@ -27,9 +28,10 @@ public class DeleteConfirmController {
 	
 	// 編集削除を選ぶ画面へ戻る
 	@PostMapping("return_edit_delete2")
-	public String returnEditDeletePage2(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+	public String returnEditDeletePage2(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model, @ModelAttribute EmployeeNumForm empform) {
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		List<Summary> summaries = eservice.monthAttends(myform.getEmployeeNum());
 		
@@ -42,7 +44,7 @@ public class DeleteConfirmController {
 	
     //	削除完了画面にいく
 	@PostMapping("delete_complete_page")
-	public String deleteCompletePage(@ModelAttribute SummaryForm summaryform,Model model,@ModelAttribute MyForm myform) {
+	public String deleteCompletePage(@ModelAttribute SummaryForm summaryform,Model model,@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform) {
 		
 		//System.out.println(summaryform);
 		
@@ -55,6 +57,7 @@ public class DeleteConfirmController {
 		dservice.deleteBridge(delete);
 		
 		model.addAttribute("employeeNum",summaryform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		return "delete-complete";
 	}

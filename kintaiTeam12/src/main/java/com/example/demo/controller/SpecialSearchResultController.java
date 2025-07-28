@@ -30,6 +30,8 @@ public class SpecialSearchResultController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
+		
 		return "my-page";
 	}
 	

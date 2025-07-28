@@ -6,6 +6,31 @@
 <link rel="stylesheet" th:href="@{/css/style3.css}">
 </head>
 <body>
+	
+	<header>
+	    <h3 class="header-title">
+	        <form th:action="@{/my_page}" th:object="${employeeNumForm}" method="post">
+	            <input type="hidden" th:field="*{employeeNum}">
+	            <button type="submit" class="header-btn">M社勤怠管理システム</button>
+	        </form>
+	    </h3>
+	    <nav class="nav">
+	      <ul class="menu-group">
+	        <li class="menu-item">
+	            <form th:action="@{/logout_page}" method="post">
+	                <input type="hidden" th:field="*{employeeNum}">
+	                <button type="submit" class="header-btn">ログアウト</button>
+	            </form>
+	        </li>
+	      </ul>
+	    </nav>
+	</header>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
     <h1 class="tytle">編集</h1>
     <form th:action="@{/edit_confirm_page}" method="post" th:object="${summaryForm}">
         <table border="1">

@@ -32,6 +32,8 @@ public class DeleteCompleteController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		return "my-page";
 	}
 	
