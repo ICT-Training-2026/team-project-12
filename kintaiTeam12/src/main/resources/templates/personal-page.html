@@ -7,7 +7,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <div>総務専用ページ</div>
+	    <h1>総務専用ページ</h1>
 	<form th:action="@{/my_page_personal}" th:object ="${employeeNumForm}"  method="post" >
 			<input type="hidden" th:field="*{employeeNum}">
 			<input type="submit" value="myページ" class="btn">
