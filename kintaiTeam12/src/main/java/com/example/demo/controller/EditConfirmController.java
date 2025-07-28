@@ -5,8 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.entity.Edit;
-import com.example.demo.form.AttendForm;
+import com.example.demo.entity.Summary;
 import com.example.demo.form.MyForm;
 import com.example.demo.form.SummaryForm;
 import com.example.demo.service.EditConfirmService;
@@ -33,22 +32,25 @@ public class EditConfirmController {
 	
 //	編集完了画面にいく
 	@PostMapping("edit_complete_page")
-	public String editCompletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform, Model model) {
+	public String editCompletePage(@ModelAttribute MyForm myform, @ModelAttribute SummaryForm summaryform, Model model) {
 		
-		Edit edit = new Edit();
+		Summary summary = new Summary();
 		
-		edit.setEmployeeNum(attendform.getEmployeeNum());
-		edit.setYear(attendform.getYear());
-		edit.setStartHour(attendform.getStartHour());
-		edit.setStartMinute(attendform.getStartMinute());
-		edit.setFinishHour(attendform.getFinishHour());
-		edit.setFinishMinute(attendform.getFinishMinute());
-		edit.setRestTime(attendform.getRestTime());
+		summary.setEmployeeNum(summaryform.getEmployeeNum());
+		summary.setDate(summaryform.getDate());
+		summary.setAttendanceType(summaryform.getAttendanceType());
+		summary.setStartHour(summaryform.getStartHour());
+		summary.setStartMinute(summaryform.getStartMinute());
+		summary.setFinishHour(summaryform.getFinishHour());
+		summary.setFinishMinute(summaryform.getFinishMinute());
+		summary.setRestTime(summaryform.getRestTime());
+		
+		summary.setAttendanceId(summaryform.getAttendanceId());
 		
 		
-		eservice.editBridge(edit);
+		eservice.editBridge(summary);
 		
-		model.addAttribute("employeenum",attendform.getEmployeeNum());
+		model.addAttribute("employeenum",summaryform.getEmployeeNum());
 		
 		return "edit-complete";
 	}

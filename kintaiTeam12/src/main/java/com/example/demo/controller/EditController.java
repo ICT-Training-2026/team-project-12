@@ -13,7 +13,6 @@ import com.example.demo.form.MyForm;
 import com.example.demo.form.SummaryForm;
 import com.example.demo.service.EditDeleteService;
 import com.example.demo.service.HolidayService;
-import com.example.demo.service.RegistExistService;
 import com.example.demo.service.SubstitudeService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,6 @@ public class EditController {
 	private final EditDeleteService eservice;
 	private final HolidayService hservice;
 	private final SubstitudeService sservice;
-	private final RegistExistService reservice;
 	
 	// 編集削除のトップ画面へ戻る
 	@PostMapping("return_edit_delete")

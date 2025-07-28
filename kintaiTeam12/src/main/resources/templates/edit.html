@@ -220,6 +220,7 @@
         </table>
 		
 		<input type="hidden" th:field="*{employeeNum}">
+		<input type="hidden" th:field="*{attendanceId}">
       
         <div class="btn-container">
             <input type="submit" value="編集確定" class="btn">
@@ -228,7 +229,7 @@
     </form>
 	
     <!--	エラー-->
-<!--	<p th:text="${}"></p>-->
+	<p th:text="${message}"></p>
    
     <form th:action="@{/return_edit_delete}" method="post" th:object="${myForm}">
 		<input type="hidden" th:field="*{employeeNum}">

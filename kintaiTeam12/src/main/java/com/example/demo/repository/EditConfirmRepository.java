@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Edit;
+import com.example.demo.entity.Summary;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,32 +14,24 @@ public class EditConfirmRepository {
 	
 	private final JdbcTemplate jdbcTemplate;
 	
-	// DBから見つける
-//		public List<Edit> findBySameday(List<edit>) {
-//			
-//			String sql = "INSERT INTO ATTENDANCES (EMPLOYEE_NUM, YEAR, ATTENDANCE_TYPE, START_HOUR, START_MINUTE, FINISH_HOUR, FINISH_MINUTE, REST_TIME) VALUES "
-//					+ "(?, ?, ?, ?, ?, ?, ?, ?)";
-//			
-//			System.out.println("RegistConfirmRepository" + edit.getAttendanceType());
-//			
-//			jdbcTemplate.update(sql, edit.getEmployeeNum(), edit.getYear(), edit.getAttendanceType(), edit.getStartHour(), edit.getStartMinute(), edit.getFinishHour(), edit.getFinishMinute(), edit.getRestTime());
-//			
-//		}
 	
 	// 勤怠記録の編集
-	public void updateByEdit(Edit edit) {
+	public void updateByEdit(Summary summary) {
 		
-		String sql = "INSERT INTO ATTENDANCES (EMPLOYEE_NUM, YEAR, ATTENDANCE_TYPE, START_HOUR, START_MINUTE, FINISH_HOUR, FINISH_MINUTE, REST_TIME) VALUES "
-				+ "(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "UPDATE ATTENDANCES "
+				+ "SET ATTENDANCE_TYPE = ?, START_HOUR = ?, START_MINUTE = ?, FINISH_HOUR = ?, FINISH_MINUTE = ?, REST_TIME = ? "
+				+ "WHERE ATTENDANCE_ID = ?;";
 		
-		System.out.println("EditConfirmRepository" + edit.getAttendanceType());
+		System.out.println("EditConfirmRepository 勤怠区分確認：" + summary.getAttendanceType());
+		System.out.println("EditConfirmRepository 勤怠ID確認：" + summary.getAttendanceId());
 		
-		jdbcTemplate.update(sql, edit.getEmployeeNum(), edit.getYear(), edit.getAttendanceType(), edit.getStartHour(), edit.getStartMinute(), edit.getFinishHour(), edit.getFinishMinute(), edit.getRestTime());
+		
+		jdbcTemplate.update(sql, summary.getAttendanceType(), summary.getStartHour(), summary.getStartMinute(), summary.getFinishHour(), summary.getFinishMinute(), summary.getRestTime(), summary.getAttendanceId());
 		
 	}
 	
 	// 年休の計算
-	public void updateByPaidHoliday(Edit edit) {
+	public void updateByPaidHoliday(Summary summary) {
 		
 		String sql = "UPDATE EMPLOYEES e "
 				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
@@ -46,7 +39,7 @@ public class EditConfirmRepository {
 				+ "WHERE a.ATTENDANCE_TYPE = '年休' AND e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
 				
 		
-		jdbcTemplate.update(sql, edit.getEmployeeNum());
+		jdbcTemplate.update(sql, summary.getEmployeeNum());
 		
 	}
 	
