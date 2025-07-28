@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import java.time.LocalDate;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +28,7 @@ public class NameRepository {
 	
 	public String sumByHours(String empnum) {
 		
-		String total = "0";
+		
 		
 		
 		LocalDate currentDate = LocalDate.now();
@@ -44,13 +45,20 @@ public class NameRepository {
 	            + "    ATTENDANCES "
 	            + "WHERE "
 	            + "    EMPLOYEE_NUM = ? "
-	            + "    AND ATTENDANCE_TYPE IN (?, ?, ?) " 
+	            //+ "    AND ATTENDANCE_TYPE IN (?, ?, ?) " 
 	            + "    AND YEAR BETWEEN ? AND ? "
 	            + "GROUP BY "
 	            + "    EMPLOYEE_NUM ";
 		
-	    total = jdbcTemplate.queryForObject(sql, String.class, empnum, "出勤", "年休", "振出", firstDayOfMonth, lastDayOfMonth);
+	    //total = jdbcTemplate.queryForObject(sql, String.class, empnum, "出勤", "年休", "振出", firstDayOfMonth, lastDayOfMonth);
 		
+		String total = "0";
+	    try {
+	    	total = jdbcTemplate.queryForObject(sql, String.class, empnum, firstDayOfMonth, lastDayOfMonth);
+	    }catch (EmptyResultDataAccessException e){
+	    	total = "0";
+	    }
+	    
 	    int dotIndex = total.indexOf(".");
 	    total = (dotIndex == -1) ? total : total.substring(0, dotIndex);
 		return total;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.MyPage;
 import com.example.demo.entity.Regist;
 import com.example.demo.form.AttendForm;
+import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.HolidayService;
 import com.example.demo.service.NameService;
@@ -30,7 +31,7 @@ public class RegistController {
 	
 	// マイページへ戻る
 	@PostMapping("return_mypage")
-	public String returnMypage(@ModelAttribute MyForm myform, Model model) {
+	public String returnMypage(@ModelAttribute MyForm myform, Model model,@ModelAttribute EmployeeNumForm empform) {
 		
 		MyPage tmp = new MyPage();
 		

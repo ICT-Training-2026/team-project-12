@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html>
 <head>
     <meta charset="UTF-8">
     <title>編集削除</title>
@@ -39,7 +38,18 @@
                     <tr th:each="result : ${resultList}">
                         <td>
                             <form th:action="@{/edit}" method="post">
-                                <input type="submit" value="編集" class="tbtn">
+								<input type="hidden" name="employeeNum" th:value="${result.employeeNum}">
+								<input type="hidden" name="attendanceId" th:value="${result.attendanceId}">
+								<input type="hidden" name="date" th:value="${result.date}">
+								<input type="hidden" name="empName" th:value="${result.empName}">
+								<input type="hidden" name="attendanceType" th:value="${result.attendanceType}">
+								<input type="hidden" name="startHour" th:value="${result.startHour}">
+								<input type="hidden" name="startMinute" th:value="${result.startMinute}">
+								<input type="hidden" name="finishHour" th:value="${result.finishHour}">
+								<input type="hidden" name="finishMinute" th:value="${result.finishMinute}">
+								<input type="hidden" name="restTime" th:value="${result.restTime}">
+								
+								<input type="submit" value="編集" class="tbtn">
                             </form>
                         </td>
                         <td>
@@ -75,7 +85,7 @@
 
     <form th:action="@{/edit_delete_return_mypage}" method="post" th:object="${myForm}">
 		<input type="hidden" th:field="*{employeeNum}">
-        <input type="submit" value="MYページにもどる" class="btn">
+        <input type="submit" value="もどる" class="btn">
     </form>
 </body>
 </html>
