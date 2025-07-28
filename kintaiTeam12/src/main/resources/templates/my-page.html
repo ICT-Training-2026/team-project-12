@@ -12,46 +12,34 @@
         <h1>Welcome</h1>
        
         <!-- ユーザー情報表示 -->
-		<p class="user-info">
-			社員番号 <a th:text="${employeenum}"></a> <a th:text = "${name}"></a>さん
-		</p>
-		
-        <!-- 月の労働時間 -->
-        <p class="work-hours">
-            今月の労働時間は<a th:text = "${hours}"></a>時間です。
-        </p>
-		
-       
-        <!-- ボタン一覧 -->
-        <div class="button-group">
-    <!-- 勤怠登録ボタン -->
-	<form th:action="@{regist_attend}" th:object="${myForm}" method="post" class="btn">
-		<input type="hidden" th:field="*{employeeNum}">
-	
-		<input type="submit" class="btn-icon" value="⏰">
-		<p class="button-label">勤怠登録</p>
-	</form>
+		<div class="button-group">
+		    <!-- 勤怠登録ボタン -->
+		    <form th:action="@{regist_attend}" th:object="${myForm}" method="post" class="btn">
+		        <input type="hidden" th:field="*{employeeNum}">
+		        <input type="submit" class="btn-icon" value="⏰">
+		        <p class="button-label">勤怠登録</p>
+		    </form>
 
+		    <!-- 編集・削除ボタン -->
+		    <form th:action="@{edit_delete}" th:object="${myForm}" method="post" class="btn">
+		        <input type="hidden" th:field="*{employeeNum}">
+		        <input type="submit" class="btn-icon" value="✏️">
+		        <p class="button-label">編集・削除</p>
+		    </form>
 
-    <!-- 編集・削除ボタン -->
-    <form th:action="@{edit_delete}" th:object="${myForm}"  method="post" class="btn">
-		<input type="hidden" th:field="*{employeeNum}">
-        <input type="submit" class="btn-icon" value="✏️">
-        <p class="button-label">編集・削除</p>
-    </form>
+		    <!-- 勤怠検索ボタン -->
+		    <form th:action="@{search}" th:object="${myForm}" method="post" class="btn">
+		        <input type="hidden" th:field="*{employeeNum}">
+		        <input type="submit" class="btn-icon" value="🔍">
+		        <p class="button-label">勤怠検索</p>
+		    </form>
+		</div>
 
-
-    <!-- 勤怠検索ボタン -->
-    <form th:action="@{search}" th:object="${myForm}"  method="post" class="btn">
-		<input type="hidden" th:field="*{employeeNum}">
-        <input type="submit" class="btn-icon" value="🔍">
-        <p class="button-label">勤怠検索</p>
-    </form>
-	
-	<form th:action="@{/login_succes_mypage}" th:object ="${employeeNumForm}"  method="post" >
-		<input type="hidden" th:field="*{employeeNum}">
-		<input type="submit" value="戻る" class="btn">
-	</form>
+		<!-- 戻るボタン -->
+		<form th:action="@{/login_my_page}" th:object="${employeeNumForm}" method="post" class="back-button">
+		    <input type="hidden" th:field="*{employeeNum}">
+		    <input type="submit" value="戻る" class="btn back-btn">
+		</form>
 	
 	
 </div>
