@@ -23,7 +23,6 @@ public class DeleteCompleteController {
 	@PostMapping("delete_return_mypage")
 	public String returnMypage(@ModelAttribute MyForm myform, Model model,@ModelAttribute EmployeeNumForm empform) {
 		
-		//
 		MyPage tmp = new MyPage();
 		
 		
