@@ -35,19 +35,23 @@ public class MyPageController {
 	
 	// 勤怠登録画面へ
 	@PostMapping("/regist_attend")
-	public String registPage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+	public String registPage(@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform, @ModelAttribute AttendForm registform, Model model) {
+		
+		System.out.println(myform);
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		return "regist-attend";
 	}
 	
 	// 編集・削除画面へ
 	@PostMapping("/edit_delete")
-	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm registform, Model model) {
+	public String editDeletePage(@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform, @ModelAttribute AttendForm registform, Model model) {
 
 		
 		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		List<Summary> summaries = eservice.monthAttends(myform.getEmployeeNum());
 		
@@ -62,10 +66,11 @@ public class MyPageController {
 	
 	// 検索画面へ
 	@PostMapping("/search")
-	public String searchPage(@ModelAttribute MyForm myform, @ModelAttribute InputDataForm inputform, Model model) {
+	public String searchPage(@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform, @ModelAttribute InputDataForm inputform, Model model) {
 		
 		boolean result = service.authBridge(myform.getEmployeeNum());
 		model.addAttribute("employeenum",myform.getEmployeeNum());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		if(result) {
 			return "search-special";

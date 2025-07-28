@@ -33,6 +33,8 @@ public class EditDeleteController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		return "my-page";
 	}
 	
@@ -46,7 +48,9 @@ public class EditDeleteController {
 	
 	
 	@PostMapping("delete")
-	public String deletePage(@ModelAttribute SummaryForm summaryform, Model model,@ModelAttribute MyForm myform){
+	public String deletePage(@ModelAttribute SummaryForm summaryform, Model model,@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform){
+		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		System.out.println(summaryform);
 		
@@ -70,8 +74,10 @@ public class EditDeleteController {
 	
 	
 	@PostMapping("edit")
-	public String editPage(@ModelAttribute SummaryForm summaryform, Model model, @ModelAttribute MyForm myform) {
+	public String editPage(@ModelAttribute SummaryForm summaryform, Model model, @ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform) {
 
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		System.out.println(summaryform);
 
 		String formattedStartMinute = String.format("%02d", summaryform.getStartMinute());

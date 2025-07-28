@@ -20,7 +20,7 @@ public class AuthController {
 	private final NameService nservice;
 	private final PersonalService pservice;
 	
-	@PostMapping("my_page")
+	@PostMapping("/my_page")
 	public String myPage(@ModelAttribute EmployeeNumForm empform, @ModelAttribute MyForm myform,Model model) {
 		
 		MyPage tmp = new MyPage();
@@ -32,6 +32,8 @@ public class AuthController {
 		model.addAttribute("employeenum",empform.getEmployeeNum());
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
+		
 		
 		return "my-page";
 	}
@@ -44,10 +46,13 @@ public class AuthController {
 		
 		if(compose.equals("1")||compose.equals("2")){
 			
+			model.addAttribute("employeeNum",empform.getEmployeeNum());
+			
 			return "personal-page";
 			
 		}else {
 			
+			model.addAttribute("employeeNum",empform.getEmployeeNum());
 			model.addAttribute("message","あなたには権限がありません");
 			return "login-success";
 			

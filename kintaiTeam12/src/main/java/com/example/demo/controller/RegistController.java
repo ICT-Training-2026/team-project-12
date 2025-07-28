@@ -41,6 +41,8 @@ public class RegistController {
 		model.addAttribute("employeenum",myform.getEmployeeNum());
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
+		
 		
 		
 		return "my-page";
@@ -48,9 +50,9 @@ public class RegistController {
 	
 	
 	@PostMapping("regist_confirm")
-	public String registConfirm(@ModelAttribute MyForm myform, @Validated@ModelAttribute AttendForm attendform, Model model, BindingResult result) {
+	public String registConfirm(@ModelAttribute MyForm myform, @Validated@ModelAttribute AttendForm attendform, @ModelAttribute EmployeeNumForm empform, Model model, BindingResult result) {
 		
-		
+		model.addAttribute("employeeNum",myform.getEmployeeNum());
 		
 		// 勤怠時刻の分：00で表示
 		String formattedStartMinute = String.format("%02d", attendform.getStartMinute());
