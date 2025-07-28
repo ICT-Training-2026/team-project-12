@@ -26,7 +26,7 @@ public class SpecialSearchController {
 	private final SpecialResultService sservice;
 	
 	@PostMapping("/my_page_sp")
-	public String returnMyPage(@ModelAttribute MyForm myform, Model model) {
+	public String returnMyPage(@ModelAttribute MyForm myform, Model model,@ModelAttribute EmployeeNumForm empform) {
 
 		System.out.println("RegistController myPage : " + myform);
 		

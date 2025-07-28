@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.InputData;
 import com.example.demo.entity.Summary;
 import com.example.demo.form.AttendForm;
+import com.example.demo.form.EmployeeNumForm;
 import com.example.demo.form.InputDataForm;
 import com.example.demo.form.MyForm;
 import com.example.demo.service.EditDeleteService;
@@ -88,5 +89,14 @@ public class MyPageController {
 			
 			return "search-normal";
 		}
+	}
+	
+	//ログイン成功画面へ
+	@PostMapping("/login_succes_mypage")
+	public String returnLoginSuccess(@ModelAttribute EmployeeNumForm empform ,Model model) {
+		
+		model.addAttribute("employeeNum",empform.getEmployeeNum());
+		System.out.println(model);
+		return "login-success";	
 	}
 }
