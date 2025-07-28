@@ -47,4 +47,11 @@
         <input type="submit" class="btn-icon" value="🔍">
         <p class="button-label">勤怠検索</p>
     </form>
+	
+	<form th:action="@{/login_succes_mypage}" th:object ="${employeeNumForm}"  method="post" >
+		<input type="hidden" th:field="*{employeeNum}">
+		<input type="submit" value="戻る" class="btn">
+	</form>
+	
+	
 </div>
