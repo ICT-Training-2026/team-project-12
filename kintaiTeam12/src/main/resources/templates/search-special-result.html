@@ -39,14 +39,19 @@
 <div th:if="${resultList} == null">
 	<br>
 	<h1 class="tytle">勤怠データが存在しません</h1>
+	<div class="button-container">
+	<form th:action="@{/return_special_search}" th:object ="${employeeNumForm}" method="post">
+	    <input type="hidden" th:field="*{employeeNum}">
+	    <input type="submit" value="検索画面にもどる" class="btn">
+	</form>
 	<form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post" >
 		<input type="hidden" th:field="*{employeeNum}">
 		<input type="submit" value=MYページにもどる class="btn">
 	</form>
+	</div>
 </div>
 
 <div th:if="${resultList} != null">
-
     <h1 class="tytle">検索結果</h1>
 
     <table border="1">
@@ -55,10 +60,9 @@
         </tr>
 
         <tr th:each="result : ${resultList}">
-            
             <td th:text="${result.date}"></td>
-			<td th:text="${result.empName}"></td>
-			<td th:text="${result.composeId}"></td>
+            <td th:text="${result.empName}"></td>
+            <td th:text="${result.composeId}"></td>
             <td th:text="${result.attendanceType}"></td>
             <td th:text="${result.startTime}"></td>
             <td th:text="${result.finishTime}"></td>
@@ -66,14 +70,18 @@
         </tr>
     </table>
 
+    <div class="button-container">
+        <form th:action="@{/return_special_search}" th:object ="${employeeNumForm}" method="post">
+            <input type="hidden" th:field="*{employeeNum}">
+            <input type="submit" value="検索画面にもどる" class="btn">
+        </form>
 
-	
-    <form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post" >
-		<input type="hidden" th:field="*{employeeNum}">
-		<input type="submit" value=MYページにもどる class="btn">
-    </form>
-
-	</div>
+        <form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post">
+            <input type="hidden" th:field="*{employeeNum}">
+            <input type="submit" value="MYページにもどる" class="btn">
+        </form>
+    </div>
+</div>
    
 </body>
 </html>
