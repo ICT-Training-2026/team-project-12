@@ -7,14 +7,15 @@
 </head>
 <body>
     <h1 class="tytle">編集</h1>
-    <form th:action="@{/edit_confirm_page}" method="post" th:object="${attendForm}">
+    <form th:action="@{/edit_confirm_page}" method="post" th:object="${summaryForm}">
         <table border="1">
             <tr>
                 <th>日付</th>
-                <td>    
-                    <div class="form-group">
-						<input type="text" th:field="*{year}" readonly>
-                    </div>
+				<td>
+					<div class="form-group">
+					    <p th:text="*{date}"></p>
+					    <input type="hidden" th:field="*{date}">
+					</div>
                 </td>
             </tr>
             <tr>
@@ -37,8 +38,6 @@
                 <td>
                     <div class="form-group">
                         <select th:field="*{startHour}">
-                            <option value="6">6</option>
-                            <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="10">10</option>
@@ -126,8 +125,6 @@
                 <td>
                     <div class="form-group">
                         <select th:field="*{finishHour}">
-                            <option value="6">6</option>
-                            <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="10">10</option>
@@ -234,6 +231,8 @@
 <!--	<p th:text="${}"></p>-->
    
     <form th:action="@{/return_edit_delete}" method="post" th:object="${myForm}">
+		<input type="hidden" th:field="*{employeeNum}">
+		
 		<input type="submit" value="もどる" class="btn">
     </form>
 </body>

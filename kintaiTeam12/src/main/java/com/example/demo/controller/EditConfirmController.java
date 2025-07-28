@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.Edit;
 import com.example.demo.form.AttendForm;
 import com.example.demo.form.MyForm;
+import com.example.demo.form.SummaryForm;
 import com.example.demo.service.EditConfirmService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,12 +22,12 @@ public class EditConfirmController {
 	
 	// 編集画面へ戻る
 	@PostMapping("edit_return_page")
-	public String returnEditPage(@ModelAttribute MyForm myform, @ModelAttribute AttendForm attendform,Model model) {
+	public String returnEditPage(@ModelAttribute MyForm myform, @ModelAttribute SummaryForm summaryform,Model model) {
 		
-//		model.addAttribute("employeenum",attendform.getEmployeeNum());
-//		
-//		System.out.println("RegistConfirmController returnRegistAttend : " + attendform);
-
+		model.addAttribute("employeenum",summaryform.getEmployeeNum());
+		
+		System.out.println("EditConfirmController 編集画面へ戻る : " + summaryform);
+		
 		return "edit";
 	}
 	

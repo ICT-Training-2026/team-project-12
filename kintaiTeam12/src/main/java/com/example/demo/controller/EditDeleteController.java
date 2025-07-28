@@ -20,7 +20,7 @@ public class EditDeleteController {
 	
 	// マイページへ戻る
 	@PostMapping("edit_delete_return_mypage")
-	public String returnMyPage(@ModelAttribute MyForm myform, Model model) {		
+	public String returnMyPage(@ModelAttribute MyForm myform, @ModelAttribute EmployeeNumForm empform Model model) {		
 		
 		MyPage tmp = new MyPage();
 		
@@ -66,6 +66,35 @@ public class EditDeleteController {
 		
 		return "delete";
 	}
+	
+	
+	@PostMapping("edit")
+	public String editPage(@ModelAttribute SummaryForm summaryform, Model model, @ModelAttribute MyForm myform) {
+
+		System.out.println(summaryform);
+
+		String formattedStartMinute = String.format("%02d", summaryform.getStartMinute());
+		String formattedFinishMinute = String.format("%02d", summaryform.getFinishMinute());
+
+		model.addAttribute("date", summaryform.getDate());
+		model.addAttribute("attendanceId", summaryform.getAttendanceId());
+		model.addAttribute("empName", summaryform.getEmpName());
+		model.addAttribute("attendanceType", summaryform.getAttendanceType());
+		model.addAttribute("startHour", summaryform.getStartHour());
+		model.addAttribute("startMinute", formattedStartMinute);
+		model.addAttribute("finishHour", summaryform.getFinishHour()); // 修正: finishHourを取得
+		model.addAttribute("finishMinute", formattedFinishMinute);
+		model.addAttribute("restTime", summaryform.getRestTime());
+
+		// hidden fields
+		model.addAttribute("summaryForm", summaryform); // ここでsummaryFormを追加
+		
+		System.out.println("編集起動確認：" + summaryform);
+
+		return "edit";
+	}
+	
+	
 }
 	
 
