@@ -136,7 +136,7 @@ public class RegistController {
 		System.out.println("if年休振休：起動確認");
 		
 		
-		if("休日".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType()) && !compose) {
+		if(("休日".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType())) && !compose) {
 			
 			
 			model.addAttribute("message","休日と振出は平日に申請できません");

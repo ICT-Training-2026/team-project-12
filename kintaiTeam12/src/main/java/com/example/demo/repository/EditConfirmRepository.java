@@ -3,7 +3,6 @@ package com.example.demo.repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entity.Edit;
 import com.example.demo.entity.Summary;
 
 import lombok.RequiredArgsConstructor;
@@ -13,6 +12,18 @@ import lombok.RequiredArgsConstructor;
 public class EditConfirmRepository {
 	
 	private final JdbcTemplate jdbcTemplate;
+	
+	// 前の勤怠区分を取ってくる
+	public String selectAttendanceType(int attendanceId) {
+		
+		String sql = "SELECT ATTENDANCE_TYPE FROM ATTENDANCES WHERE ATTENDANCE_ID = ?";
+		
+		String attendanceType = jdbcTemplate.queryForObject(sql, String.class, attendanceId);
+		
+		
+		return attendanceType;
+	}
+	
 	
 	
 	// 勤怠記録の編集
@@ -30,22 +41,56 @@ public class EditConfirmRepository {
 		
 	}
 	
-	// 年休の計算
-	public void updateByPaidHoliday(Summary summary) {
-		
+	// 年休を減らす計算
+	public void updateByMinusPaidHoliday(Summary summary) {
+
 		String sql = "UPDATE EMPLOYEES e "
 				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
 				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS - 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '年休' AND e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
-				
-		
+				+ "WHERE e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+
 		jdbcTemplate.update(sql, summary.getEmployeeNum());
-		
+
 	}
 	
 	
+	// 年休を増やす計算
+	public void updateByPlusPaidHoliday(Summary summary) {
+
+		String sql = "UPDATE EMPLOYEES e "
+				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
+				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS + 1 "
+				+ "WHERE e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+
+		jdbcTemplate.update(sql, summary.getEmployeeNum());
+
+	}
+	
+	
+
+	// 振出の計算
+	public void updateByPlusSubstitudeHoliday(Summary summary) {
+
+		String sql = "UPDATE EMPLOYEES e "
+				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
+				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
+				+ "WHERE e.EMPLOYEE_NUM = ?;";
+
+		jdbcTemplate.update(sql, summary.getEmployeeNum());
+
+	}
+	
+
 	// 振休の計算
-	public void updateBySubstitudeHoliday(Edit edit) {
+	public void updateByMinusSubstitudeHoliday(Summary summary) {
+		
+		String sql = "UPDATE EMPLOYEES e "
+				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
+				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
+				+ "WHERE e.EMPLOYEE_NUM = ?;";
+				
+		
+		jdbcTemplate.update(sql, summary.getEmployeeNum());
 		
 		
 	}

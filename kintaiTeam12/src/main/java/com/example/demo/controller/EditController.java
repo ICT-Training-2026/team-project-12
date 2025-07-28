@@ -61,8 +61,8 @@ public class EditController {
 
 		summaryform.setEmployeeNum(myform.getEmployeeNum());
 
-//		// 二重登録時にエラー表示
-//
+		// 二重登録時にエラー表示
+
 //		Regist regist = new Regist();
 //
 //		regist.setEmployeeNum(summaryform.getEmployeeNum());
@@ -121,10 +121,10 @@ public class EditController {
 		}
 
 		// 休日、振出の取得日付が平日になるときにエラーを返す
-		System.out.println("if年休振休：起動確認");
 
-		if ("休日".equals(summaryform.getAttendanceType()) || "振出".equals(summaryform.getAttendanceType()) && !compose) {
+		if (("休日".equals(summaryform.getAttendanceType()) || "振出".equals(summaryform.getAttendanceType())) && !compose) {
 
+			
 			model.addAttribute("message", "休日と振出は平日に申請できません");
 
 			return "edit";
