@@ -39,7 +39,6 @@ public class SpecialSearchController {
 		model.addAttribute("name",tmp.getName());
 		model.addAttribute("hours",tmp.getHours());
 		
-		
 		return "my-page";
 	}
 	
