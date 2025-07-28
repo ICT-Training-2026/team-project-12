@@ -13,6 +13,7 @@ body {
 .tytle {
     font-size: 24px;
     margin-bottom: 20px;
+    text-align: center; /* Center the text within the element */
 }
 
 .btn {
@@ -103,4 +104,11 @@ header {
   list-style: none;
   display: inline-block;
   padding: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 10px; /* Add space between the buttons */
+    margin-top: 20px; /* Add some margin to separate from the table */
 }
