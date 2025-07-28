@@ -14,8 +14,14 @@
     </style>
 </head>
 <body>
+	
+	<div th:if="${resultList} == null">
+		<h1 class="tytle">勤怠データが存在しません</h1>
+	</div>
+	
+	
     <div th:if="${resultList} != null">
-        <h1 class="tytle">検索結果</h1>
+        <h1 class="tytle">編集削除</h1>
 
         <div class="table-container"> <!-- スクロール可能なコンテナ -->
             <table border="1">

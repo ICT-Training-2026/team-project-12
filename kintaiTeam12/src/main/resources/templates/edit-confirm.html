@@ -37,28 +37,32 @@
 	    </table>
 		
 	    <div>
-	        <form th:action="@{/edit_complete_page}" method="post" th:object="${attendForm}">
+	        <form th:action="@{/edit_complete_page}" method="post" th:object="${summaryForm}">
 				<input type="hidden" th:field="*{employeeNum}">
-				<input type="hidden" th:field="*{year}">
+				<input type="hidden" th:field="*{date}">
 				<input type="hidden" th:field="*{attendanceType}">
 				<input type="hidden" th:field="*{startHour}">
 				<input type="hidden" th:field="*{startMinute}">
 				<input type="hidden" th:field="*{finishHour}">
 				<input type="hidden" th:field="*{finishMinute}">
 				<input type="hidden" th:field="*{restTime}">
+				
+				<input type="hidden" th:field="*{attendanceId}">
 							
 	            <input type="submit" value="登録する" class="btn">
 	        </form>
 			
-			<form th:action="@{/edit_return_page}" method="post" th:object="${attendForm}">
+			<form th:action="@{/edit_return_page}" method="post" th:object="${summaryForm}">
 				<input type="hidden" th:field="*{employeeNum}">
-				<input type="hidden" th:field="*{year}">
+				<input type="hidden" th:field="*{date}">
 				<input type="hidden" th:field="*{attendanceType}">
 				<input type="hidden" th:field="*{startHour}">
 				<input type="hidden" th:field="*{startMinute}">
 				<input type="hidden" th:field="*{finishHour}">
 				<input type="hidden" th:field="*{finishMinute}">
 				<input type="hidden" th:field="*{restTime}">
+				
+				<input type="hidden" th:field="*{attendanceId}">
 				
 				<input type="submit" value="もどる" class="btn">      
 			</form>

@@ -43,7 +43,7 @@ public class RegistConfirmService {
 		if ("振休".equals(regist.getAttendanceType())) {
 			
 			System.out.println("if振休：起動確認");
-
+			
 			rrepository.updateByMinusSubstitudeHoliday(regist);
 
 		}

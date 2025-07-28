@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Edit;
+import com.example.demo.entity.Summary;
 import com.example.demo.repository.EditConfirmRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -11,27 +11,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EditConfirmService {
 
-	private final EditConfirmRepository erepository;
+	private final EditConfirmRepository ecrepository;
 	
-	public void editBridge(Edit edit) {
+	public void editBridge(Summary summary) {
 		
-		System.out.println("EditConfirmService" + edit);
-		
-		
-		// 年休の計算
-		// 労働時間を固定
-		if("年休".equals(edit.getAttendanceType())) {
-			
-			System.out.println("if年休：起動確認");
-			
-			
-			erepository.updateByPaidHoliday(edit);
-		}
+		System.out.println("EditConfirmService 起動確認：" + summary);
 		
 		
 		
-		// 勤怠時間の登録
-		erepository.updateByEdit(edit);
+		
+		
+		
+		
+		
+		
+		// 勤怠時間の編集登録
+		ecrepository.updateByEdit(summary);
+		
 		
 	}
 	
