@@ -19,7 +19,7 @@
 	        <li class="menu-item">
 	            <form th:action="@{/logout_page}" method="post">
 	                <input type="hidden" th:field="*{employeeNum}">
-	                <button type="submit" class="header-btn">ログアウト</button>
+	                <button type="submit" class="header-btn-2">ログアウト</button>
 	            </form>
 	        </li>
 	      </ul>
@@ -42,6 +42,7 @@
 	    <input type="hidden" th:field="*{employeeNum}">
 	    <input type="submit" value="検索画面にもどる" class="btn">
 	</form>
+	
 	
 	<form th:action="@{/my_page_spresult}" th:object ="${employeeNumForm}" method="post" >
 		<input type="hidden" th:field="*{employeeNum}">

@@ -87,6 +87,44 @@ public class RegistController {
 
 		}
 		
+		// 年休のとき、労働時間を固定
+		if ("年休".equals(attendform.getAttendanceType())) {
+			
+			
+			
+			attendform.setStartHour(9);
+			attendform.setStartMinute(0);
+			attendform.setFinishHour(17);
+			attendform.setFinishMinute(0);
+			attendform.setRestTime(60);
+			
+			model.addAttribute("startHour",attendform.getStartHour());
+			model.addAttribute("startMinute", formattedStartMinute);
+			model.addAttribute("finishHour",attendform.getFinishHour());
+			model.addAttribute("finishMinute", formattedFinishMinute);
+			model.addAttribute("restTime", attendform.getRestTime());
+			
+		}
+
+		// 休日、欠勤、振休のとき、労働時間を自動で0にする
+		if ("休日".equals(attendform.getAttendanceType()) || "欠勤".equals(attendform.getAttendanceType()) || "振休".equals(attendform.getAttendanceType())) {
+
+			attendform.setStartHour(0);
+			attendform.setStartMinute(0);
+			attendform.setFinishHour(0);
+			attendform.setFinishMinute(0);
+			attendform.setRestTime(0);
+
+			model.addAttribute("startHour", attendform.getStartHour());
+			model.addAttribute("startMinute", formattedStartMinute);
+			model.addAttribute("finishHour", attendform.getFinishHour());
+			model.addAttribute("finishMinute", formattedFinishMinute);
+			model.addAttribute("restTime", attendform.getRestTime());
+
+		}
+		
+		
+		
 		// 出勤・振出の退勤時刻が22:45を過ぎているときにエラー表示
 		if (("出勤".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType())) && (attendform.getFinishHour() == 22) && (attendform.getFinishMinute() > 45)) {
 			
@@ -94,6 +132,60 @@ public class RegistController {
 
 			return "regist-attend";
 		}
+		
+		
+		
+		// 出勤・振出で、出勤退勤時刻が同じ場合にエラー表示
+		if (("出勤".equals(attendform.getAttendanceType()) || "振出".equals(attendform.getAttendanceType())) && (attendform.getStartHour() == attendform.getFinishHour()) && (attendform.getStartMinute() == attendform.getFinishMinute())) {
+			
+			model.addAttribute("message", "出勤・振出のとき、出勤時刻と退勤時刻を同じ時間にできません");
+
+			return "regist-attend";
+		}
+		
+		
+		
+		
+		// 退勤時間が出勤時間より前に申請されるときにエラー表示
+		if (attendform.getStartHour() > attendform.getFinishHour()) {
+			
+			model.addAttribute("message", "退勤時刻を出勤時刻より前の時間にできません");
+			
+			return "regist-attend";
+		}
+		if ((attendform.getStartHour() == attendform.getFinishHour()) && (attendform.getStartMinute() > attendform.getFinishMinute())) {
+
+			model.addAttribute("message", "退勤時刻を出勤時刻より前の時間にできません");
+
+			return "regist-attend";
+		}
+		
+		
+		
+		// 休憩時間が労働時間より多くなってしまう場合にエラー表示
+		int workTime = (attendform.getFinishHour() * 60 + attendform.getFinishMinute()) - (attendform.getStartHour() * 60 + attendform.getStartMinute());
+		
+		if (workTime < attendform.getRestTime()) {
+			
+			model.addAttribute("message", "休憩時間が労働時間より多くなっています");
+			
+			return "regist-attend";
+			
+		}
+		
+		
+		
+		// 実労働時間が４時間以上のとき、
+		int realWorkTime = workTime - attendform.getRestTime();
+		
+		if (realWorkTime >= 240 && attendform.getRestTime() < 60) {
+			
+			model.addAttribute("message", "実労働時間が4時間以上の為、休憩時間が60分以上必要です");
+			
+			return "regist-attend";
+		}
+		
+		
 		
 		
 		// 休憩時間が4桁以上の時にエラー表示
@@ -161,42 +253,6 @@ public class RegistController {
 		}
 		
 		
-		
-		// 年休のとき、労働時間を固定
-		if ("年休".equals(attendform.getAttendanceType())) {
-			
-			
-			
-			attendform.setStartHour(9);
-			attendform.setStartMinute(0);
-			attendform.setFinishHour(16);
-			attendform.setFinishMinute(0);
-			attendform.setRestTime(0);
-			
-			model.addAttribute("startHour",attendform.getStartHour());
-			model.addAttribute("startMinute", formattedStartMinute);
-			model.addAttribute("finishHour",attendform.getFinishHour());
-			model.addAttribute("finishMinute", formattedFinishMinute);
-			model.addAttribute("restTime", attendform.getRestTime());
-			
-		}
-
-		// 休日、欠勤、振休のとき、労働時間を自動で0にする
-		if ("休日".equals(attendform.getAttendanceType()) || "欠勤".equals(attendform.getAttendanceType()) || "振休".equals(attendform.getAttendanceType())) {
-
-			attendform.setStartHour(0);
-			attendform.setStartMinute(0);
-			attendform.setFinishHour(0);
-			attendform.setFinishMinute(0);
-			attendform.setRestTime(0);
-
-			model.addAttribute("startHour", attendform.getStartHour());
-			model.addAttribute("startMinute", formattedStartMinute);
-			model.addAttribute("finishHour", attendform.getFinishHour());
-			model.addAttribute("finishMinute", formattedFinishMinute);
-			model.addAttribute("restTime", attendform.getRestTime());
-
-		}
 		
 		
 		return "regist-confirm";
