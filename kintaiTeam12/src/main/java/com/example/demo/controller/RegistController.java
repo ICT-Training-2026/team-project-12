@@ -94,9 +94,9 @@ public class RegistController {
 			
 			attendform.setStartHour(9);
 			attendform.setStartMinute(0);
-			attendform.setFinishHour(16);
+			attendform.setFinishHour(17);
 			attendform.setFinishMinute(0);
-			attendform.setRestTime(0);
+			attendform.setRestTime(60);
 			
 			model.addAttribute("startHour",attendform.getStartHour());
 			model.addAttribute("startMinute", formattedStartMinute);
@@ -172,6 +172,19 @@ public class RegistController {
 			return "regist-attend";
 			
 		}
+		
+		
+		
+		// 実労働時間が４時間以上のとき、
+		int realWorkTime = workTime - attendform.getRestTime();
+		
+		if (realWorkTime >= 240 && attendform.getRestTime() < 60) {
+			
+			model.addAttribute("message", "実労働時間が4時間以上の為、休憩時間が60分以上必要です");
+			
+			return "regist-attend";
+		}
+		
 		
 		
 		
