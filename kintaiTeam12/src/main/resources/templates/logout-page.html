@@ -7,6 +7,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+	<div class="robot"></div> <!-- ロボットの要素を追加 -->
 	<h1>ログアウトしました</h1>
 	
 	<form th:action="@{/login_page_logout}" th:object ="${loginForm}" method="post" >
