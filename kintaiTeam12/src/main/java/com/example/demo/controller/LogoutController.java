@@ -13,6 +13,10 @@ public class LogoutController {
 	@PostMapping("/logout_page")
 	public String logoutPage(@ModelAttribute LoginForm loginform,Model model) {
 		
+		model.addAttribute("employeeNum",null);
+		model.addAttribute("pass",null);
+		
+		
 		System.out.println(loginform);
 		System.out.println(model);
 		
