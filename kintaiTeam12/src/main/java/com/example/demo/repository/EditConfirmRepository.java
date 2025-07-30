@@ -44,10 +44,9 @@ public class EditConfirmRepository {
 	// 年休を減らす計算
 	public void updateByMinusPaidHoliday(Summary summary) {
 
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS - 1 "
-				+ "WHERE e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS - 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 
 		jdbcTemplate.update(sql, summary.getEmployeeNum());
 
@@ -57,10 +56,9 @@ public class EditConfirmRepository {
 	// 年休を増やす計算
 	public void updateByPlusPaidHoliday(Summary summary) {
 
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS + 1 "
-				+ "WHERE e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS + 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 
 		jdbcTemplate.update(sql, summary.getEmployeeNum());
 
@@ -71,10 +69,9 @@ public class EditConfirmRepository {
 	// 振出の計算
 	public void updateByPlusSubstitudeHoliday(Summary summary) {
 
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
-				+ "WHERE e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS + 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 
 		jdbcTemplate.update(sql, summary.getEmployeeNum());
 
@@ -84,10 +81,9 @@ public class EditConfirmRepository {
 	// 振休の計算
 	public void updateByMinusSubstitudeHoliday(Summary summary) {
 		
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
-				+ "WHERE e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS - 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 				
 		
 		jdbcTemplate.update(sql, summary.getEmployeeNum());

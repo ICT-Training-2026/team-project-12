@@ -30,13 +30,17 @@ public class RegistConfirmRepository {
 	// 年休の計算
 	public void updateByPaidHoliday(Regist regist) {
 		
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS - 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '年休' AND e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+		
+		
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS - 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 				
 		
 		jdbcTemplate.update(sql, regist.getEmployeeNum());
+		
+		System.out.println("年休確認社員番号：" + regist.getEmployeeNum());
+		System.out.println("年休計算完了");
 		
 	}
 	
@@ -44,23 +48,24 @@ public class RegistConfirmRepository {
 	// 振出の計算
 	public void updateByPlusSubstitudeHoliday(Regist regist) {
 		
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS + 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 				
 		
 		jdbcTemplate.update(sql, regist.getEmployeeNum());
+		
+		System.out.println("振出計算完了");
+		
 		
 	}
 	
 	// 振休の計算
 	public void updateByMinusSubstitudeHoliday(Regist regist) {
 		
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS - 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 				
 		
 		jdbcTemplate.update(sql, regist.getEmployeeNum());
