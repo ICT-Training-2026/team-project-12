@@ -25,10 +25,9 @@ public class DeleteConfirmRepository {
 
 	// 年休削除後の更新
 	public void updateByPaidHoliday(Delete delete) {
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.PAID_HOLIDAYS = e.PAID_HOLIDAYS + 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '年休' AND e.PAID_HOLIDAYS > 0 AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS - 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 		
 	    jdbcTemplate.update(sql, delete.getEmployeeNum());
 	}
@@ -37,10 +36,9 @@ public class DeleteConfirmRepository {
 	// 振休削除後の更新
 	public void updateByPlusSubstitudeHoliday(Delete delete) {
 
-		String sql = "UPDATE EMPLOYEES e "
-				+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-				+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS + 1 "
-				+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+		String sql = "UPDATE EMPLOYEES "
+				+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS + 1 "
+				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 		
 		jdbcTemplate.update(sql, delete.getEmployeeNum());
 	  
@@ -49,10 +47,9 @@ public class DeleteConfirmRepository {
 	// 振出削除後の更新
 		public void updateByMinusSubstitudeHoliday(Delete delete) {
 
-			String sql = "UPDATE EMPLOYEES e "
-					+ "JOIN ATTENDANCES a ON e.EMPLOYEE_NUM = a.EMPLOYEE_NUM "
-					+ "SET e.SUBSTITUDE_HOLIDAYS = e.SUBSTITUDE_HOLIDAYS - 1 "
-					+ "WHERE a.ATTENDANCE_TYPE = '振出' AND e.EMPLOYEE_NUM = ?;";
+			String sql = "UPDATE EMPLOYEES "
+					+ "SET EMPLOYEES.SUBSTITUDE_HOLIDAYS = EMPLOYEES.SUBSTITUDE_HOLIDAYS - 1 "
+					+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 		  
 			jdbcTemplate.update(sql, delete.getEmployeeNum());
 	}
