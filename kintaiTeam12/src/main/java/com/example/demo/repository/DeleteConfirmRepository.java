@@ -26,7 +26,7 @@ public class DeleteConfirmRepository {
 	// 年休削除後の更新
 	public void updateByPaidHoliday(Delete delete) {
 		String sql = "UPDATE EMPLOYEES "
-				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS - 1 "
+				+ "SET EMPLOYEES.PAID_HOLIDAYS = EMPLOYEES.PAID_HOLIDAYS + 1 "
 				+ "WHERE EMPLOYEES.EMPLOYEE_NUM = ?;";
 		
 	    jdbcTemplate.update(sql, delete.getEmployeeNum());
